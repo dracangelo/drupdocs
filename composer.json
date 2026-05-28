@@ -32,6 +32,7 @@
         "drupal/r4032login": "^2.2",
         "drupal/redirect": "^1.13",
         "drupal/seckit": "^2.0",
+        "drupal/symfony_mailer": "^2.0",
         "drush/drush": "^13.7"
     },
     "conflict": {
