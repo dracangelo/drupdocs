@@ -209,14 +209,14 @@
 .view-document-library table thead th {
   padding: 0.65rem 1.1rem;
   border-bottom: 1px solid var(--border-color);
-  color: var(--text-muted);
+  color: #8fa8b4;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.65rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: left;
-  background: rgba(255, 255, 255, 0.018);
+  background: #162635;
   white-space: nowrap;
 }
 
@@ -231,10 +231,10 @@
 .view-document-library .view-content,
 .views-table,
 .view-document-library table {
-  border: var(--glass-border);
+  border: 1px solid rgba(142, 190, 205, 0.2);
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: var(--glass-bg);
+  background: #0d1a26;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -266,18 +266,18 @@
 
 .views-table tbody tr:hover,
 .view-document-library table tbody tr:hover {
-  background: rgba(0, 229, 255, 0.04);
+  background: rgba(0, 229, 255, 0.075);
 }
 
 .views-table tbody tr + tr td,
 .view-document-library table tbody tr + tr td {
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid rgba(150, 190, 205, 0.28);
 }
 
 .views-table tbody td,
 .view-document-library table tbody td {
   padding: 1rem 1.1rem;
-  color: var(--text-soft);
+  color: #b5c9d2;
   vertical-align: middle;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -304,7 +304,7 @@
 /* Document title column — Geist body-md bold */
 .views-table tbody td:first-child,
 .view-document-library table tbody td:first-child {
-  color: var(--text-main);
+  color: #d4f8ff;
   font-family: 'Geist', sans-serif;
   font-weight: 600;
   font-size: 0.9375rem;
@@ -313,7 +313,7 @@
 
 .views-table tbody td a,
 .view-document-library table tbody td a {
-  color: var(--text-main);
+  color: #d4f8ff;
   font-family: 'Geist', sans-serif;
   font-weight: 600;
   font-size: 0.9375rem;
@@ -334,7 +334,7 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.02em;
-  color: var(--text-muted);
+  color: #93aab5;
 }
 
 /* =============================================
@@ -932,11 +932,17 @@
 .docportal-document-page .docportal-main,
 .path-documents .docportal-main,
 .path-my-documents .docportal-main {
-  width: calc(100vw - 280px);
-  max-width: calc(100vw - 280px);
-  padding-left: 2.25rem;
+  --docportal-sidebar-safe-gap: 1.75rem;
+  width: calc(100% - 280px - var(--docportal-sidebar-safe-gap));
+  max-width: calc(100% - 280px - var(--docportal-sidebar-safe-gap));
+  margin-left: calc(280px + var(--docportal-sidebar-safe-gap));
+  padding-left: 1.25rem;
   padding-right: 1.25rem;
   padding-top: 0.8rem;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(0, 221, 255, 0.08), transparent 28%),
+    linear-gradient(135deg, #071522 0%, #0b1824 48%, #09131d 100%);
 }
 
 .docportal-document-page .layout-sidebar-first,
@@ -1020,18 +1026,43 @@
 .docportal-document-page .docportal-content-shell,
 .path-documents .docportal-content-shell,
 .path-my-documents .docportal-content-shell {
-  padding: 1.1rem;
+  --docportal-card-gutter: 0.75rem;
+  --docportal-list-indent: clamp(3rem, 5vw, 5.5rem);
+  padding: 1.25rem;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid rgba(132, 189, 211, 0.16);
+  border-radius: var(--radius-lg);
+  background: #111f2b;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.38);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .docportal-document-page .docportal-page-hero,
 .path-documents .docportal-page-hero,
 .path-my-documents .docportal-page-hero {
+  position: relative;
+  justify-content: center;
   margin-bottom: 1rem;
+  padding-inline: 6rem;
   padding-bottom: 0.9rem;
-  border-bottom: var(--glass-border);
+  border-bottom: 1px solid rgba(174, 219, 232, 0.12);
+}
+
+.docportal-document-page .docportal-page-hero-left,
+.path-documents .docportal-page-hero-left,
+.path-my-documents .docportal-page-hero-left {
+  margin-inline: auto;
+}
+
+.docportal-document-page .docportal-page-status,
+.path-documents .docportal-page-status,
+.path-my-documents .docportal-page-status {
+  position: absolute;
+  top: 0.15rem;
+  right: 0;
 }
 
 .docportal-document-page .docportal-page-hero-icon,
@@ -1046,6 +1077,13 @@
 .path-documents .docportal-page-hero-title,
 .path-my-documents .docportal-page-hero-title {
   font-size: 1.55rem;
+  color: #d8fbff;
+}
+
+.docportal-document-page .docportal-page-hero-sub,
+.path-documents .docportal-page-hero-sub,
+.path-my-documents .docportal-page-hero-sub {
+  color: #9eb7c2;
 }
 
 .docportal-document-page .view-filters,
@@ -1065,6 +1103,7 @@
   gap: 0.5rem;
   width: 100%;
   max-width: none;
+  margin-inline: 0;
 }
 
 .docportal-document-page .views-exposed-form .form-item,
@@ -1107,7 +1146,7 @@
 }
 
 .view-document-library .view-content {
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .docportal-document-page .view-document-library,
@@ -1134,17 +1173,28 @@
 .docportal-document-page .view-document-library .view-content {
   justify-items: stretch !important;
   align-items: stretch !important;
-  overflow-x: auto;
-  margin-left: 5rem !important;
+  overflow-x: hidden;
+  margin-left: 0 !important;
   margin-right: 0 !important;
-  width: calc(100% - 5rem) !important;
-  max-width: calc(100% - 5rem) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  border-color: rgba(142, 190, 205, 0.18);
+  background: #0d1a26;
+}
+
+.docportal-document-page .view-document-library .view-content,
+.path-documents .view-document-library .view-content,
+.path-my-documents .view-document-library .view-content {
+  margin-left: var(--docportal-list-indent) !important;
+  width: calc(100% - var(--docportal-list-indent)) !important;
+  max-width: calc(100% - var(--docportal-list-indent)) !important;
 }
 
 .views-table,
 .view-document-library table {
   table-layout: fixed !important;
   min-width: 0;
+  max-width: 100%;
   display: table !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
@@ -1159,7 +1209,7 @@
 .view-document-library table th:nth-child(1),
 .views-table td:nth-child(1),
 .view-document-library table td:nth-child(1) {
-  width: 34%;
+  width: 36%;
 }
 
 .views-table th:nth-child(2),
@@ -1173,7 +1223,7 @@
 .view-document-library table th:nth-child(3),
 .views-table td:nth-child(3),
 .view-document-library table td:nth-child(3) {
-  width: 22%;
+  width: 20%;
 }
 
 .views-table th:nth-child(4),
@@ -1225,12 +1275,29 @@
 .file a,
 .file--mime-application-pdf a {
   max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(0, 221, 255, 0.28);
+  border-radius: 9px;
+  background: #12384a;
+  color: #00e5ff;
   white-space: normal;
+  word-break: break-word;
   overflow-wrap: anywhere;
 }
 
+.views-table tbody td:nth-child(4) a:hover,
+.view-document-library table tbody td:nth-child(4) a:hover,
+.file a:hover,
+.file--mime-application-pdf a:hover {
+  border-color: rgba(0, 229, 255, 0.5);
+  background: #16495f;
+  color: #77f3ff;
+}
+
 @media (min-width: 901px) {
-  .docportal-document-page .view-document-library .view-content,
   .docportal-document-page .views-table,
   .docportal-document-page .view-document-library table {
     width: 100% !important;
@@ -1254,6 +1321,7 @@
   .path-my-documents .docportal-main {
     width: 100%;
     max-width: 100%;
+    margin-left: 0;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
@@ -1261,15 +1329,19 @@
   .path-documents .docportal-page-hero,
   .path-my-documents .docportal-page-hero {
     gap: 0.75rem;
+    justify-content: space-between;
+    padding-inline: 0;
   }
 
   .path-documents .docportal-page-hero-left,
   .path-my-documents .docportal-page-hero-left {
     align-items: flex-start;
+    margin-inline: 0;
   }
 
   .path-documents .docportal-page-status,
   .path-my-documents .docportal-page-status {
+    position: static;
     min-height: 28px;
   }
 
