@@ -1,0 +1,17 @@
+# Ignore core vendor dependencies (Composer handles this)
+/vendor/
+
+# Ignore Drupal settings overrides and private system files
+/web/sites/*/settings.local.php
+/web/sites/*/services.local.yml
+
+# Ignore public and private files (user uploads, cached styles)
+/web/sites/default/files/
+/private/
+
+# Keep your custom theme/modules but ignore core assets if needed
+# (Your files under web/themes/custom/docportal will be tracked safely)
+
+# Keep local DDEV state but ignore user-specific overrides
+/.ddev/.env*
+/.ddev/db-snapshots/

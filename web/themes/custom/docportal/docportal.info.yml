@@ -1,0 +1,17 @@
+name: DocPortal
+type: theme
+description: Corporate document portal theme
+base theme: olivero
+core_version_requirement: ^10 || ^11
+version: 1.0.0
+
+libraries:
+  - docportal/global
+
+regions:
+  header: Header
+  primary_menu: Primary menu
+  breadcrumb: Breadcrumb
+  content: Content
+  sidebar_first: Sidebar
+  footer: Footer

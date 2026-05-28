@@ -1,0 +1,10 @@
+global:
+  css:
+    theme:
+      css/global.css: {}
+      css/login.css: {}
+      css/documents.css: {}
+  js:
+    js/docportal.js: {}
+  dependencies:
+    - core/drupal

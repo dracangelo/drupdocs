@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Contains hooks to be invoked during testing.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Session\AccountInterface;
+
+/**
+ * Implements hook_content_access_node_page().
+ */
+function content_access_hooks_test_content_access_node_page(AccountInterface $account, RouteMatchInterface $route_match, array $access_parameters, AccessResultInterface $access): AccessResultInterface {
+  $state = \Drupal::state();
+  // Record that the hook was invoked.
+  $state->set('content_access_test_hook_invoked', TRUE);
+  $return_type = $state->get('content_access_test_hook_return', 'neutral');
+
+  return match ($return_type) {
+    'allowed' => AccessResult::allowed(),
+    'forbidden' => AccessResult::forbidden(),
+    default => AccessResult::neutral(),
+  };
+}

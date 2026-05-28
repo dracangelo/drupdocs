@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap');
+
+:root,
+[data-theme="light"],
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-page: #0b1020;
+  --bg-surface: #121a2f;
+  --bg-surface-strong: #18233d;
+  --bg-sidebar: #0d1426;
+  --bg-hover: #1a2746;
+  --bg-active: #22345f;
+  --border-color: #243252;
+  --border-strong: #30456f;
+  --text-main: #f3f6ff;
+  --text-soft: #b7c3e0;
+  --text-muted: #7f90b6;
+  --text-title: #ffd37a;
+  --accent-primary: #79a8ff;
+  --accent-secondary: #8ef0d2;
+  --accent-warm: #ffc76b;
+  --danger: #ff8f8f;
+  --shadow-sm: 0 8px 18px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 18px 40px rgba(0, 0, 0, 0.26);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --transition: 180ms ease;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-main);
+  margin: 0;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent-primary);
+}
+
+.olivero-nav,
+.site-header,
+.region-header,
+.olivero-search-bar,
+#toolbar-administration,
+header.site-header {
+  display: none !important;
+}
+
+.layout-main-wrapper {
+  margin-top: 0 !important;
+}
+
+body.path-user-login .docportal-topbar,
+body.path-user-password .docportal-topbar,
+body.path-user-register .docportal-topbar,
+body.path-user-login .docportal-sidebar,
+body.path-user-password .docportal-sidebar,
+body.path-user-register .docportal-sidebar,
+body.path-user-login .docportal-layout,
+body.path-user-password .docportal-layout,
+body.path-user-register .docportal-layout {
+  display: none !important;
+}
+
+.docportal-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.docportal-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  padding: 1.75rem 0;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  overflow-y: auto;
+  z-index: 1200;
+}
+
+.docportal-brand {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1rem;
+  margin: 0 1rem 1.3rem;
+  padding: 1.15rem;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  background: var(--bg-surface);
+  color: var(--text-main);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.docportal-brand-mark {
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: var(--bg-active);
+  color: var(--accent-warm);
+}
+
+.docportal-brand-mark svg {
+  width: 28px;
+  height: 28px;
+}
+
+.docportal-brand-copy {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.docportal-brand-kicker {
+  color: var(--accent-secondary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.docportal-brand-copy strong {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.45rem;
+  color: var(--text-main);
+}
+
+.docportal-brand-copy span:last-child {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.nav-section {
+  padding: 0.85rem 1.5rem 0.8rem;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0 1rem 0.5rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  color: var(--text-soft);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.nav-item svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent-primary);
+}
+
+.nav-item:hover {
+  border-color: var(--border-color);
+  background: var(--bg-hover);
+  color: var(--text-main);
+}
+
+.nav-item.active {
+  border-color: var(--border-strong);
+  background: var(--bg-active);
+  color: var(--text-main);
+}
+
+.sidebar-card {
+  margin: 1.25rem 1rem 0;
+  padding: 1.1rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  background: var(--bg-surface);
+}
+
+.sidebar-card-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sidebar-card strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--text-title);
+  font-size: 1rem;
+}
+
+.sidebar-card p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+}
+
+.sidebar-logout {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  color: var(--text-soft);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.sidebar-logout svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-primary);
+}
+
+.sidebar-logout:hover {
+  background: var(--bg-hover);
+  color: var(--text-main);
+}
+
+.docportal-main {
+  flex: 1;
+  margin-left: 280px;
+  padding: 2.5rem 2rem;
+  animation: fadeUp 220ms ease-out;
+}
+
+.docportal-content-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.docportal-content-shell > .layout-container,
+.docportal-content-shell > main,
+.docportal-content-shell > div {
+  min-height: 60vh;
+}
+
+.docportal-content-shell .region-content > *:first-child,
+.docportal-content-shell .block-system-main-block,
+.docportal-content-shell .views-element-container,
+.docportal-content-shell article,
+.docportal-content-shell .profile {
+  max-width: 100%;
+}
+
+.docportal-main h1,
+.docportal-main h2,
+.docportal-main h3,
+.docportal-main .page-title {
+  color: var(--text-title);
+  font-family: 'DM Serif Display', serif;
+  letter-spacing: 0.01em;
+}
+
+.docportal-main p,
+.docportal-main li,
+.docportal-main label,
+.docportal-main .description {
+  color: var(--text-soft);
+}
+
+.docportal-main .page-title {
+  margin-top: 0;
+  margin-bottom: 1.4rem;
+}
+
+.docportal-main .breadcrumb,
+.docportal-main .tabs,
+.docportal-main .action-links {
+  margin-bottom: 1.25rem;
+}
+
+.docportal-main .tabs a,
+.docportal-main .action-links a {
+  color: var(--accent-primary);
+}
+
+.docportal-main .profile {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.docportal-main .profile .user-picture {
+  margin: 0;
+}
+
+.docportal-main .profile img {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid var(--border-color);
+}
+
+.docportal-main .profile .field,
+.docportal-main .profile .field--name-user-picture,
+.docportal-main .profile .member-for {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  background: var(--bg-surface-strong);
+}
+
+.docportal-main .profile .field__label,
+.docportal-main .profile .member-for {
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.docportal-main .profile .field__item,
+.docportal-main .profile .field__item a {
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.docportal-main input,
+.docportal-main select,
+.docportal-main textarea,
+.docportal-main button {
+  font: inherit;
+}
+
+.btn-primary,
+input.button,
+button.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 1.1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--bg-active);
+  color: var(--text-main);
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary:hover,
+input.button:hover,
+button.button:hover {
+  background: var(--accent-primary);
+  color: #08101f;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .docportal-sidebar {
+    width: 236px;
+  }
+
+  .docportal-main {
+    margin-left: 236px;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .docportal-sidebar {
+    left: -100%;
+    width: 100%;
+    transition: left 220ms ease;
+  }
+
+  .docportal-sidebar.open {
+    left: 0;
+  }
+
+  .docportal-main {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .docportal-content-shell {
+    padding: 1.25rem;
+  }
+}
+

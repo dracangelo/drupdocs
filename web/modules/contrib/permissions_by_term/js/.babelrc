@@ -1,0 +1,19 @@
+{
+  "ignore": [
+    "node_modules",
+    "package.json",
+    "package-json.lock",
+    "drupal-behavior-function",
+    "webpack-dist"
+  ],
+  "plugins": [],
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "useBuiltIns": "entry",
+        "corejs": "3.22"
+      }
+    ]
+  ]
+}

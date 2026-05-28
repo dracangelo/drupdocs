@@ -1,0 +1,28 @@
+{
+  "name": "permissions_by_term",
+  "version": "3.x",
+  "description": "Scripts for the permissions_by_term Drupal module.",
+  "main": "node-form.js",
+  "license": "GPL-2.0-only",
+  "scripts": {
+    "test": "npx qunit webpack-dist/bundle-test.js",
+    "babel-build-for-test": "babel src/**/*.js test/*.js -d babel-compiled-test",
+    "cleanup-babel-test": "rm -rf babel-compiled-test/",
+    "build-and-test": "cp -R src/drupal-behavior-function /tmp && npm run-script webpack-test && cp -R /tmp/drupal-behavior-function src/ && npm run-script test",
+    "build": "webpack --config webpack.js --mode production",
+    "build-dev": "webpack --config webpack.js --mode development",
+    "webpack-test": "npx webpack --entry ./src/**/*.js ./test/*.js --output-path ./webpack-dist --mode development",
+    "bat": "npm run-script build-and-test"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/preset-env": "^7.24.0",
+    "axios": "^1.12.2",
+    "babel-loader": "^9.1.3",
+    "lodash": "^4.17.21",
+    "sinon": "^17.0.1",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  },
+  "browserslist": "> 0.25%, not dead"
+}

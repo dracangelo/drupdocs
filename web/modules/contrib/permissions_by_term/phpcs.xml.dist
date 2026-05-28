@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="drupal_module">
+  <description>PHP CodeSniffer configuration for Drupal modules.</description>
+  <arg name="extensions" value="php,module,inc,install,test,profile,theme,css,info,txt,md,yml"/>
+  <config name="drupal_core_version" value="9"/>
+
+  <rule ref="Drupal">
+    <exclude name="Drupal.Files.TxtFileLineLength" />
+    <exclude name="Drupal.Files.LineLength"/>
+    <exclude name="Drupal.Commenting.Deprecated" />
+    <exclude name="Drupal.Commenting.DocComment" />
+    <exclude name="Drupal.Commenting.FunctionComment" />
+    <exclude name="Drupal.Commenting.ClassComment"/>
+    <exclude name="Drupal.Commenting.VariableComment"/>
+    <exclude name="Drupal.Arrays.Array.LongLineDeclaration" />
+    <exclude name="Drupal.Semantics.FunctionTriggerError" />
+    <exclude name="Drupal.Semantics.FunctionT.BackslashSingleQuote"/>
+    <exclude name="DrupalPractice.FunctionCalls.InsecureUnserialize.InsecureUnserialize"/>
+  </rule>
+  <rule ref="DrupalPractice"/>
+
+  <file>.</file>
+  <exclude-pattern>*/vendor/*</exclude-pattern>
+  <exclude-pattern>*/node_modules/*</exclude-pattern>
+</ruleset>

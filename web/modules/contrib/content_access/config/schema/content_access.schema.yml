@@ -1,0 +1,33 @@
+content_access.settings:
+  type: config_object
+  label: 'Content Access settings'
+  mapping:
+    content_access_roles_gids:
+      type: sequence
+      label: 'Role - Grant Id mapping array'
+      sequence:
+        type: integer
+        label: 'Grant ID'
+
+node.type.*.third_party.content_access:
+  type: mapping
+  label: 'Content Access settings'
+  mapping:
+    view_own:
+      type: sequence
+      label: 'Roles that can view own content'
+      sequence:
+        type: string
+        label: 'Role ID'
+    view:
+      type: sequence
+      label: 'Roles that can view any content'
+      sequence:
+        type: string
+        label: 'Role ID'
+    per_node:
+      type: boolean
+      label: 'Per-node access control'
+    priority:
+      type: integer
+      label: 'Access priority'

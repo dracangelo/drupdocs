@@ -1,0 +1,82 @@
+<?php
+
+/**
+ * @file
+ * Module file for Permission by Entity.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Session\AccountInterface;
+
+/**
+ * Implements hook_entity_access().
+ */
+function permissions_by_entity_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  /** @var \Drupal\permissions_by_term\Cache\AccessResultCache $cache */
+  $cache = \Drupal::service('permissions_by_entity.access_result_cache');
+  $accessResult = AccessResult::neutral();
+
+  /** @var \Drupal\permissions_by_entity\Service\AccessChecker $accessChecker */
+  if (
+    $operation === 'view' &&
+    $entity instanceof FieldableEntityInterface &&
+    !$entity->isNew() &&
+    $entity->getEntityTypeId() != 'node'
+  ) {
+    $accessChecker = \Drupal::service('permissions_by_entity.access_checker');
+    // Check if the entity is even using term based access control.
+    if ($accessChecker->isAccessControlled($entity)) {
+      if ($cache->hasAccessResultsCache($account->id(), $entity)) {
+        return $cache->getAccessResultsCache($account->id(), $entity);
+      }
+
+      // Do not just return a neutral result if access allowed by the module.
+      $accessResult = $accessChecker->isAccessAllowed($entity, $account->id()) ? AccessResult::allowed() : AccessResult::forbidden('Access revoked by permissions_by_entity module.');
+      $cache->setAccessResultsCache($account->id(), $entity, $accessResult);
+    }
+  }
+
+  return $accessResult;
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function permissions_by_entity_entity_insert(EntityInterface $entity) {
+  /** @var \Drupal\permissions_by_entity\Service\AccessCheckerInterface $accessChecker */
+  $accessChecker = \Drupal::service('permissions_by_entity.access_checker');
+
+  if ($entity instanceof FieldableEntityInterface && $accessChecker->isAccessControlled($entity)) {
+    /** @var \Drupal\Core\Cache\CacheTagsInvalidatorInterface $cacheTagsInvalidator */
+    $cacheTagsInvalidator = \Drupal::service('cache_tags.invalidator');
+
+    $entity_id = $entity->id();
+    $entity_type_id = $entity->getEntityTypeId();
+
+    $cacheTagsInvalidator->invalidateTags([
+      "permissions_by_entity:access_result_cache:{$entity_type_id}:{$entity_id}",
+    ]);
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function permissions_by_entity_entity_update(EntityInterface $entity) {
+  /** @var \Drupal\permissions_by_entity\Service\AccessCheckerInterface $accessChecker */
+  $accessChecker = \Drupal::service('permissions_by_entity.access_checker');
+
+  if ($entity instanceof FieldableEntityInterface && $accessChecker->isAccessControlled($entity)) {
+    /** @var \Drupal\Core\Cache\CacheTagsInvalidatorInterface $cacheTagsInvalidator */
+    $cacheTagsInvalidator = \Drupal::service('cache_tags.invalidator');
+
+    $entity_id = $entity->id();
+    $entity_type_id = $entity->getEntityTypeId();
+
+    $cacheTagsInvalidator->invalidateTags([
+      "permissions_by_entity:access_result_cache:{$entity_type_id}:{$entity_id}",
+    ]);
+  }
+}

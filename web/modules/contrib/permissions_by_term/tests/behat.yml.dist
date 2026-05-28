@@ -1,0 +1,37 @@
+default:
+  suites:
+    default:
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\Tests\permissions_by_term\Behat\Context\PermissionsByTermDrupalSubContext
+      paths:
+        features: '%paths.base%/web/modules/contrib/permissions_by_term/tests/src/Behat/Features'
+  extensions:
+    Drupal\MinkExtension:
+      base_url: http://localhost:80
+      files_path: "%paths.base%/tests/behat/files"
+      default_session: selenium_chrome
+      ajax_timeout: 15
+      sessions:
+        selenium_chrome:
+          selenium2:
+            wd_host: 'http://localhost:4444/wd/hub'
+            browser: "chrome"
+            capabilities:
+              extra_capabilities:
+                chromeOptions:
+                  args:
+                    - "--no-sandbox"
+                    - "--headless"
+                    - "--disable-gpu"
+                    - "--disable-dev-shm-usage"
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drupal'
+      drush:
+        alias: 'local'
+      drupal:
+        drupal_root: '%paths.base%/web'

@@ -1,0 +1,6 @@
+permission_mode: FALSE
+require_all_terms_granted: FALSE
+disable_node_access_records: FALSE
+target_bundles: { }
+show_terms_in_user_form: TRUE
+hide_terms_permissions_info_in_node_form: FALSE

@@ -1,0 +1,22 @@
+# Use this file as a template for your projects Makefile to test the Permissions by Term module.
+# This file is meant to be copied in your projects root folder. It requires DDEV and Make installed on your system.
+
+test-phpcs:
+ifeq ($(path),)
+	ddev exec vendor/bin/phpcs --standard=web/modules/custom/permissions_by_term/phpcs.xml.dist
+else
+	ddev exec vendor/bin/phpcs --standard=web/modules/custom/permissions_by_term/phpcs.xml.dist ${path}
+endif
+
+phpcbf:
+	ddev exec vendor/bin/phpcbf --standard=web/modules/custom/permissions_by_term/phpcs.xml.dist web/modules/custom
+
+test-phpunit:
+ifeq ($(filter),)
+	ddev exec vendor/bin/phpunit --configuration=web/modules/custom/permissions_by_term/tests/phpunit.xml --display-phpunit-deprecations
+else
+	ddev exec vendor/bin/phpunit --configuration=web/modules/custom/permissions_by_term/tests/phpunit.xml --filter=${filter} --display-phpunit-deprecations
+endif
+
+test-phpstan:
+	ddev exec vendor/bin/phpstan analyze --configuration web/modules/custom/permissions_by_term/phpstan.neon

@@ -1,0 +1,27 @@
+permissions_by_term.settings:
+  type: config_object
+  label: 'Permissions by Term settings'
+  mapping:
+    permission_mode:
+      type: boolean
+      label: 'Permission mode'
+    require_all_terms_granted:
+      type: boolean
+      label: 'Require all terms granted'
+    disable_node_access_records:
+      type: boolean
+      label: 'Disable node access records'
+    only_parents:
+      type: boolean
+      label: 'Show only parent terms in user form'
+    target_bundles:
+      type: sequence
+      label: 'Limit by taxonomy vocabularies'
+      sequence:
+        type: string
+    show_terms_in_user_form:
+      type: boolean
+      label: 'Show term selection in the user form'
+    hide_terms_permissions_info_in_node_form:
+      type: boolean
+      label: 'Hide terms permissions information in the node form'

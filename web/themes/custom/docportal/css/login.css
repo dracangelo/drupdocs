@@ -1,0 +1,165 @@
+body.path-user-login,
+body.path-user-password,
+body.path-user-register {
+  background: #0b1020;
+  min-height: 100vh;
+}
+
+body.path-user-login header,
+body.path-user-password header,
+body.path-user-register header,
+body.path-user-login .docportal-sidebar,
+body.path-user-password .docportal-sidebar,
+body.path-user-register .docportal-sidebar,
+body.path-user-login .docportal-topbar,
+body.path-user-password .docportal-topbar,
+body.path-user-register .docportal-topbar {
+  display: none !important;
+}
+
+body.path-user-login .layout-container,
+body.path-user-password .layout-container,
+body.path-user-register .layout-container {
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 4rem 1.25rem;
+}
+
+body.path-user-login .docportal-main,
+body.path-user-password .docportal-main,
+body.path-user-register .docportal-main {
+  margin-left: 0;
+  padding: 0;
+}
+
+.login-card-wrap {
+  padding: 2.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 22px;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.login-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.login-logo-mark {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  background: var(--bg-surface-strong);
+  color: var(--accent-warm);
+}
+
+.login-logo-name {
+  color: var(--text-main);
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.55rem;
+}
+
+.login-heading {
+  margin: 0 0 0.35rem;
+  color: var(--text-title);
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.login-subheading {
+  margin: 0 0 1.8rem;
+  color: var(--text-soft);
+  font-size: 0.98rem;
+}
+
+body.path-user-login .form-item,
+body.path-user-password .form-item,
+body.path-user-register .form-item {
+  margin-bottom: 1rem;
+}
+
+body.path-user-login .form-item label,
+body.path-user-password .form-item label,
+body.path-user-register .form-item label {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body.path-user-login .form-item input,
+body.path-user-password .form-item input,
+body.path-user-register .form-item input {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 0.95rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-surface-strong);
+  color: var(--text-main);
+}
+
+body.path-user-login .form-item input:focus,
+body.path-user-password .form-item input:focus,
+body.path-user-register .form-item input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+body.path-user-login .form-actions input[type="submit"],
+body.path-user-password .form-actions input[type="submit"],
+body.path-user-register .form-actions input[type="submit"] {
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--bg-active);
+  color: var(--text-main);
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+body.path-user-login .form-actions input[type="submit"]:hover,
+body.path-user-password .form-actions input[type="submit"]:hover,
+body.path-user-register .form-actions input[type="submit"]:hover {
+  background: var(--accent-primary);
+  color: #08101f;
+}
+
+.login-footer-note,
+body.path-user-login .description,
+body.path-user-password .description,
+body.path-user-register .description {
+  color: var(--text-soft);
+}
+
+body.path-user-login .form-item--error-message,
+body.path-user-password .form-item--error-message,
+body.path-user-register .form-item--error-message {
+  margin-top: 0.4rem;
+  color: var(--danger);
+}
+
+@media (max-width: 480px) {
+  .login-card-wrap {
+    padding: 1.5rem;
+    border-radius: 18px;
+  }
+
+  .login-heading {
+    font-size: 1.7rem;
+  }
+}
+

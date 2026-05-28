@@ -1,0 +1,11 @@
+name: 'Log Stdout'
+description: 'Log watchdog messages to stdout'
+package: Logging
+type: module
+core_version_requirement: ^8 || ^9 || ^10 || ^11
+configure: log_stdout.settings
+
+# Information added by Drupal.org packaging script on 2025-05-19
+version: '3.0.0'
+project: 'log_stdout'
+datestamp: 1747651310

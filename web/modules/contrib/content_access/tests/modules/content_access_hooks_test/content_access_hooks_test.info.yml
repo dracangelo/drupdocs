@@ -1,0 +1,13 @@
+name: Content Access Test
+type: module
+description: 'Test module for testing.'
+package: Testing
+core_version_requirement: ^9.4 || ^10 || ^11
+dependencies:
+  - content_access:content_access
+hidden: true
+
+# Information added by Drupal.org packaging script on 2026-05-05
+version: '2.1.0'
+project: 'content_access'
+datestamp: 1777974854

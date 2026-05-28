@@ -1,0 +1,12 @@
+name: 'Permissions by Entity'
+description: 'Extends the functionality of Permissions By Term to be able to limit the selection of specific taxonomy terms by users or roles for an entity. This involves also the access to the related entity type content.'
+type: module
+core_version_requirement: '^9 || ^10 || ^11'
+dependencies:
+  - drupal:permissions_by_term
+package: 'Permissions by Term (Experimental)'
+
+# Information added by Drupal.org packaging script on 2026-04-01
+version: '3.1.41'
+project: 'permissions_by_term'
+datestamp: 1775065267

@@ -1,0 +1,25 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '''
+				#^Call to deprecated function node_type_get_names\(\)\:
+				in drupal\:11\.3\.0 and is removed from drupal\:13\.0\.0\. Use \\Drupal\:\:service\('entity_type\.bundle\.info'\)\-\>getBundleLabels\('node'\) instead\.$#
+			'''
+			identifier: function.deprecated
+			count: 1
+			path: content_access.module
+
+		-
+			message: '''
+				#^Call to deprecated function node_type_get_names\(\)\:
+				in drupal\:11\.3\.0 and is removed from drupal\:13\.0\.0\. Use \\Drupal\:\:service\('entity_type\.bundle\.info'\)\-\>getBundleLabels\('node'\) instead\.$#
+			'''
+			identifier: function.deprecated
+			count: 1
+			path: src/Form/ContentAccessAdminSettingsForm.php
+
+		-
+			message: '#^Function acl_save_form not found\.$#'
+			identifier: function.notFound
+			count: 1
+			path: src/Form/ContentAccessPageForm.php
