@@ -286,3 +286,23 @@
   }
 }
 
+/* Force download behaviour */
+.file--mime-application-pdf a,
+.file a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: #0f1e35;
+  color: #fff !important;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.file--mime-application-pdf a::before,
+.file a::before {
+  content: '↓ ';
+  font-weight: 700;
+}

@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * Implements hook_file_download().
+ * Forces all private files to download instead of opening in browser.
+ */
+function docportal_files_file_download($uri) {
+  // Get the file
+  $files = \Drupal::entityTypeManager()
+    ->getStorage('file')
+    ->loadByProperties(['uri' => $uri]);
+  
+  if (empty($files)) {
+    return NULL;
+  }
+
+  $file = reset($files);
+  $filename = $file->getFilename();
+
+  // Log the download
+  $current_user = \Drupal::currentUser();
+  \Drupal::logger('docportal_files')->info(
+    'User @user (ID: @uid) downloaded file @file',
+    [
+      '@user' => $current_user->getAccountName(),
+      '@uid'  => $current_user->id(),
+      '@file' => $filename,
+    ]
+  );
+
+  // Force download header
+  return [
+    'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+  ];
+}
+
+/**
+ * Implements hook_user_postsave().
+ * Ensures permissions_by_term langcode is always set correctly.
+ */
+function docportal_files_user_update($account) {
+  \Drupal::database()->update('permissions_by_term_user')
+    ->fields(['langcode' => 'en'])
+    ->condition('uid', $account->id())
+    ->condition('langcode', '')
+    ->execute();
+}
