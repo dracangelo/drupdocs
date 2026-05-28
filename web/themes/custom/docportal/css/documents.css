@@ -1,46 +1,81 @@
-/* Document Library */
-.view-document-library .view-content {
-  display: grid;
-  gap: 1.5rem;
+
+/* my comment */
+
+/* =============================================
+   PAGE HERO — Section Header
+   ============================================= */
+.docportal-page-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
-.view-document-library {
-  display: grid;
-  gap: 1.25rem;
-}
-
-.view-document-library .view-filters {
-  margin-bottom: 0;
-}
-
-.docportal-search {
+.docportal-page-hero-left {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.9rem 1rem;
-  border: 1px solid var(--border-color);
+  gap: 1rem;
+}
+
+.docportal-page-hero-icon {
+  width: 48px;
+  height: 48px;
   border-radius: 14px;
-  background: var(--bg-surface-strong);
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.docportal-search svg,
-.docportal-search .icon {
-  color: var(--accent-secondary);
+.docportal-page-hero-icon svg {
+  width: 22px;
+  height: 22px;
 }
 
-.docportal-search input {
-  flex: 1;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: var(--text-main);
-  font-size: 0.98rem;
+.docportal-page-hero-title {
+  margin: 0 0 0.25rem;
+  font-family: 'Geist', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-title);
+  letter-spacing: 0;
+  line-height: 1.2;
 }
 
-.docportal-search input::placeholder {
+.docportal-page-hero-sub {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   color: var(--text-muted);
 }
 
+.docportal-page-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 0.85rem;
+  border: 1px solid rgba(0, 229, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(0, 229, 255, 0.06);
+  color: var(--accent-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* =============================================
+   STATS CARDS
+   ============================================= */
 .docportal-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -50,25 +85,116 @@
 
 .docportal-stat {
   padding: 1.25rem 1.35rem;
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  background: var(--bg-surface-strong);
+  border: var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.docportal-stat::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-primary), transparent);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.docportal-stat:hover::after {
+  opacity: 1;
+}
+
+.docportal-stat:hover {
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
 }
 
 .docportal-stat-label {
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.5rem;
   color: var(--text-muted);
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .docportal-stat-value {
   color: var(--text-title);
-  font-family: 'DM Serif Display', serif;
-  font-size: 2rem;
+  font-family: 'Geist', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
   line-height: 1;
+  letter-spacing: 0;
+}
+
+/* =============================================
+   SEARCH BAR
+   ============================================= */
+.docportal-search {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  border: var(--glass-border);
+  border-radius: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: var(--transition);
+  margin-bottom: 1.25rem;
+}
+
+.docportal-search:focus-within {
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-glow);
+}
+
+.docportal-search svg {
+  color: var(--accent-primary);
+  opacity: 0.6;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.docportal-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-family: 'Geist', sans-serif;
+}
+
+.docportal-search input::placeholder {
+  color: var(--text-muted);
+}
+
+.view-document-library .view-filters {
+  margin-bottom: 0;
+}
+
+/* =============================================
+   DOCUMENT LIST — Card-Row Table
+   ============================================= */
+.view-document-library {
+  display: grid;
+  gap: 0;
+}
+
+.view-document-library .view-content {
+  display: grid;
+  gap: 0;
 }
 
 .views-table,
@@ -76,128 +202,475 @@
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  border: 1px solid var(--border-color);
-  border-radius: 18px;
-  overflow: hidden;
-  background: var(--bg-surface-strong);
-  table-layout: fixed;
+  table-layout: auto;
 }
 
 .views-table thead th,
 .view-document-library table thead th {
-  padding: 1rem 1.2rem;
+  padding: 0.65rem 1.1rem;
   border-bottom: 1px solid var(--border-color);
   color: var(--text-muted);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: left;
+  background: rgba(255, 255, 255, 0.018);
+  white-space: nowrap;
 }
 
+/* Remove default sort link underlines */
+.views-table thead th a,
+.view-document-library table thead th a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+/* ── Table: glass container ── */
+.view-document-library .view-content,
+.views-table,
+.view-document-library table {
+  border: var(--glass-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ── Table rows as document cards ── */
 .views-table tbody tr,
 .view-document-library table tbody tr {
-  transition: var(--transition);
+  transition: background var(--transition);
+  position: relative;
 }
 
-.views-table tbody tr + tr td,
-.view-document-library table tbody tr + tr td {
-  border-top: 1px solid rgba(36, 50, 82, 0.9);
+.views-table tbody tr::after,
+.view-document-library table tbody tr::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent-primary);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.views-table tbody tr:hover::after,
+.view-document-library table tbody tr:hover::after {
+  opacity: 1;
 }
 
 .views-table tbody tr:hover,
 .view-document-library table tbody tr:hover {
-  background: #1a2642;
+  background: rgba(0, 229, 255, 0.04);
+}
+
+.views-table tbody tr + tr td,
+.view-document-library table tbody tr + tr td {
+  border-top: 1px solid var(--border-color);
 }
 
 .views-table tbody td,
 .view-document-library table tbody td {
-  padding: 1rem 1.2rem;
+  padding: 1rem 1.1rem;
   color: var(--text-soft);
   vertical-align: middle;
-  overflow-wrap: anywhere;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  white-space: normal;
+  word-break: break-word;
 }
 
+/* ── Cell-wrap: flex row for badge + text (no td flex!) ── */
+.docportal-cell-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.docportal-cell-wrap a,
+.docportal-cell-wrap span:not(.docportal-filetype) {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Document title column — Geist body-md bold */
 .views-table tbody td:first-child,
 .view-document-library table tbody td:first-child {
-  color: var(--text-title);
-  font-weight: 700;
+  color: var(--text-main);
+  font-family: 'Geist', sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.4;
 }
 
 .views-table tbody td a,
 .view-document-library table tbody td a {
-  color: var(--text-title);
+  color: var(--text-main);
+  font-family: 'Geist', sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
   text-decoration: none;
-  font-weight: 700;
+  transition: color var(--transition);
+  white-space: normal;
+  word-break: break-word;
 }
 
 .views-table tbody td a:hover,
 .view-document-library table tbody td a:hover {
-  color: var(--accent-warm);
-  text-decoration: underline;
+  color: var(--accent-primary);
 }
 
-.file a {
-  display: inline-flex;
-  align-items: center;
+/* Non-title cells — JetBrains Mono label-sm */
+.views-table tbody td:not(:first-child),
+.view-document-library table tbody td:not(:first-child) {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+}
+
+/* =============================================
+   DP CARD LIST — rebuilt horizontal card rows
+   ============================================= */
+.dp-card-list {
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
-  min-height: 40px;
-  max-width: 100%;
-  padding: 0.55rem 0.9rem;
-  border: 1px solid var(--border-strong);
+}
+
+.dp-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dp-card:hover {
+  background: rgba(0, 229, 255, 0.04);
+  border-color: rgba(0, 229, 255, 0.18);
+  transform: translateX(3px);
+}
+
+/* File type icon box */
+.dp-card-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
   border-radius: 10px;
-  background: #22345f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.dp-card-icon.ft-pdf   { background: rgba(255,100,80,0.12); color:#ff6450; border:1px solid rgba(255,100,80,0.22); }
+.dp-card-icon.ft-doc   { background: rgba(70,130,255,0.12); color:#4682ff; border:1px solid rgba(70,130,255,0.22); }
+.dp-card-icon.ft-xls   { background: rgba(50,200,110,0.12); color:#32c86e; border:1px solid rgba(50,200,110,0.22); }
+.dp-card-icon.ft-zip   { background: rgba(200,160,50,0.12); color:#c8a032; border:1px solid rgba(200,160,50,0.22); }
+.dp-card-icon.ft-other { background: rgba(255,255,255,0.04); color:var(--text-muted); border:var(--glass-border); }
+
+/* Card body — title + meta */
+.dp-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.dp-card-title {
+  display: block;
+  font-family: 'Geist', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
   color: var(--text-main);
   text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.3rem;
   line-height: 1.35;
+  transition: color 0.18s;
 }
 
-.file a:hover {
+.dp-card-title:hover { color: var(--accent-primary); }
+
+/* Meta row — category · country · date */
+.dp-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  line-height: 1;
+}
+
+.dp-card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.67rem;
+  font-weight: 500;
+  color: var(--accent-primary);
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid rgba(0, 229, 255, 0.14);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  white-space: nowrap;
+}
+
+.dp-card-country,
+.dp-card-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.dp-card-dot {
+  color: var(--border-strong);
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+/* Actions — download button */
+.dp-card-actions { flex-shrink: 0; }
+
+.dp-card-dl {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(0, 229, 255, 0.07);
+  color: var(--accent-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.18s;
+}
+
+.dp-card-dl:hover {
   background: var(--accent-primary);
-  color: #08101f;
+  color: #00363d;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.28);
 }
 
+@media (max-width: 600px) {
+  .dp-card { flex-wrap: wrap; }
+  .dp-card-actions { width: 100%; padding-left: calc(44px + 1rem); }
+}
+
+/* =============================================
+   FILE TYPE BADGE
+   ============================================= */
+.docportal-filetype {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 0.5rem;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.docportal-filetype.ft-pdf  { background: rgba(255, 100, 80, 0.12);  color: #ff6450; border: 1px solid rgba(255, 100, 80, 0.2); }
+.docportal-filetype.ft-doc,
+.docportal-filetype.ft-docx { background: rgba(70, 130, 255, 0.12); color: #4682ff; border: 1px solid rgba(70, 130, 255, 0.2); }
+.docportal-filetype.ft-xls,
+.docportal-filetype.ft-xlsx { background: rgba(50, 200, 110, 0.12); color: #32c86e; border: 1px solid rgba(50, 200, 110, 0.2); }
+.docportal-filetype.ft-zip,
+.docportal-filetype.ft-rar  { background: rgba(200, 160, 50, 0.12); color: #c8a032; border: 1px solid rgba(200, 160, 50, 0.2); }
+.docportal-filetype.ft-other { background: rgba(255, 255, 255, 0.05); color: var(--text-muted); border: var(--glass-border); }
+
+/* =============================================
+   CATEGORY TAG — Pill Chip
+   ============================================= */
 .field--name-field-document-category .field__item {
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
-  padding: 0 0.8rem;
-  border: 1px solid #31528d;
+  min-height: 24px;
+  padding: 0 0.7rem;
+  border: 1px solid rgba(0, 229, 255, 0.15);
   border-radius: 999px;
-  color: var(--accent-secondary);
-  font-size: 0.74rem;
-  font-weight: 700;
+  background: rgba(0, 229, 255, 0.06);
+  color: var(--accent-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .field--name-field-country .field__item,
 .field--name-field-country .field__item a {
   color: var(--text-soft);
   text-decoration: none;
+  font-size: 0.875rem;
 }
 
-/* Single Document */
+/* =============================================
+   FILE DOWNLOAD BUTTON
+   ============================================= */
+.file a,
+.file--mime-application-pdf a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 229, 255, 0.07);
+  color: var(--accent-primary) !important;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.file a:hover,
+.file--mime-application-pdf a:hover {
+  background: var(--accent-primary);
+  color: #00363d !important;
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.file a::before,
+.file--mime-application-pdf a::before {
+  content: '↓';
+  font-size: 0.85rem;
+}
+
+/* =============================================
+   SINGLE DOCUMENT PAGE
+   ============================================= */
 .node--type-documents {
-  max-width: 860px;
+  max-width: 900px;
+}
+
+/* Document Hero */
+.docportal-doc-hero {
   padding: 2rem;
-  border: 1px solid var(--border-color);
-  border-radius: 22px;
-  background: var(--bg-surface-strong);
+  border: var(--glass-border);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.04), rgba(18, 33, 49, 0.6));
+  position: relative;
+  overflow: hidden;
+}
+
+.docportal-doc-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: rgba(0, 229, 255, 0.04);
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
 }
 
 .node--type-documents .node__title {
-  margin-bottom: 1.75rem;
+  margin: 0 0 0.5rem;
   color: var(--text-title);
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  line-height: 1.1;
+  font-family: 'Geist', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
 }
 
+/* Document Metadata Grid */
+.docportal-doc-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px;
+  border: var(--glass-border);
+  border-top: none;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  overflow: hidden;
+  background: var(--border-color);
+}
+
+.docportal-doc-meta-item {
+  padding: 1.1rem 1.25rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: background var(--transition);
+}
+
+.docportal-doc-meta-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.docportal-doc-meta-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.docportal-doc-meta-value {
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Download section */
+.docportal-doc-download {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: var(--glass-border);
+  border-radius: var(--radius-md);
+  background: rgba(0, 229, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.docportal-doc-download p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+/* Fallback field styles for non-wrapped content */
 .node--type-documents .field {
-  margin-bottom: 1.4rem;
-  padding-bottom: 1.2rem;
-  border-bottom: 1px solid rgba(36, 50, 82, 0.9);
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .node--type-documents .field:last-child {
@@ -207,31 +680,142 @@
 }
 
 .node--type-documents .field__label {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
   color: var(--text-muted);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .node--type-documents .field__item,
 .node--type-documents .field__item a {
   color: var(--text-main);
+  font-size: 0.95rem;
 }
 
 .node--type-documents .field--name-field-document-file .file a {
-  min-height: 46px;
-  padding: 0 1.2rem;
-  border-radius: 12px;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.82rem;
+  border-radius: 10px;
+  min-height: 44px;
 }
 
-/* Pager */
+/* =============================================
+   USER PROFILE PAGE
+   ============================================= */
+.path-user .docportal-content-shell {
+  max-width: 780px;
+}
+
+.docportal-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.5rem;
+  border: var(--glass-border);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.04), rgba(18, 33, 49, 0.5));
+  flex-wrap: wrap;
+}
+
+.docportal-profile-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  color: var(--accent-primary);
+  font-family: 'Geist', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.docportal-profile-name {
+  margin: 0 0 0.2rem;
+  font-family: 'Geist', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-title);
+  letter-spacing: 0;
+}
+
+.docportal-profile-meta {
+  margin: 0;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+}
+
+.profile {
+  max-width: 100%;
+}
+
+.profile .field,
+.profile .member-for {
+  padding: 1rem 1.25rem;
+  border: var(--glass-border);
+  border-radius: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-bottom: 0.75rem;
+  transition: background var(--transition);
+}
+
+.profile .field:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.profile .field__label {
+  margin-bottom: 0.3rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.profile .field__item,
+.profile .field__item a {
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.path-user .user-full-name {
+  margin-bottom: 1rem;
+  color: var(--text-title);
+  font-family: 'Geist', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.profile h2,
+.profile h3,
+.profile .label {
+  color: var(--text-title);
+  font-family: 'Geist', sans-serif;
+}
+
+/* =============================================
+   PAGER
+   ============================================= */
 .pager {
   display: flex;
   justify-content: center;
-  gap: 0.45rem;
+  align-items: center;
+  gap: 0.35rem;
   margin-top: 1.75rem;
+  flex-wrap: wrap;
 }
 
 .pager__item a,
@@ -239,70 +823,533 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  background: var(--bg-surface-strong);
+  min-width: 36px;
+  height: 36px;
+  padding: 0 0.5rem;
+  border: var(--glass-border);
+  border-radius: var(--radius-sm);
+  background: var(--glass-bg);
   color: var(--text-soft);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: var(--transition);
+  white-space: nowrap;
 }
 
-.pager__item a:hover,
-.pager__item--current span {
-  background: var(--bg-active);
+.pager__item a:hover {
   border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--text-main);
 }
 
-/* User */
-.path-user .user-full-name {
-  margin-bottom: 1rem;
-  color: var(--text-title);
-  font-family: 'DM Serif Display', serif;
-  font-size: 2rem;
+.pager__item--current span {
+  background: var(--bg-active);
+  border-color: rgba(0, 229, 255, 0.25);
+  color: var(--accent-primary);
+  box-shadow: var(--shadow-glow);
 }
 
-.profile {
-  max-width: 720px;
+/* =============================================
+   TABS & ACTION LINKS
+   ============================================= */
+.docportal-main .tabs--primary {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
 }
 
-.profile h2,
-.profile h3,
-.profile .label {
-  color: var(--text-title);
+.docportal-main .tabs--primary .tabs__tab a,
+.docportal-main .tabs--primary a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 1rem;
+  border: var(--glass-border);
+  border-radius: var(--radius-sm);
+  background: var(--glass-bg);
+  color: var(--text-soft);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: var(--transition);
 }
 
+.docportal-main .tabs--primary .tabs__tab a:hover,
+.docportal-main .tabs--primary a:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-main);
+  border-color: var(--border-strong);
+}
+
+.docportal-main .tabs--primary .is-active a,
+.docportal-main .tabs--primary .tabs__tab--active a {
+  background: var(--bg-active);
+  border-color: rgba(0, 229, 255, 0.2);
+  color: var(--accent-primary);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
 @media (max-width: 900px) {
   .docportal-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .views-table,
   .view-document-library table {
     display: block;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .docportal-doc-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .docportal-profile-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
-/* Force download behaviour */
-.file--mime-application-pdf a,
-.file a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 14px;
-  background: #0f1e35;
-  color: #fff !important;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
-  text-decoration: none;
+@media (max-width: 600px) {
+  .docportal-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .docportal-doc-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .docportal-page-hero {
+    flex-direction: column;
+  }
 }
 
-.file--mime-application-pdf a::before,
-.file a::before {
-  content: '↓ ';
-  font-weight: 700;
+/* === Full-width document table override === */
+.docportal-document-page .docportal-main,
+.path-documents .docportal-main,
+.path-my-documents .docportal-main {
+  width: calc(100vw - 280px);
+  max-width: calc(100vw - 280px);
+  padding-left: 2.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.8rem;
 }
+
+.docportal-document-page .layout-sidebar-first,
+.docportal-document-page .layout-sidebar-second,
+.docportal-document-page .region-sidebar-first,
+.docportal-document-page .region-sidebar-second,
+.path-documents .layout-sidebar-first,
+.path-documents .layout-sidebar-second,
+.path-documents .region-sidebar-first,
+.path-documents .region-sidebar-second,
+.path-my-documents .layout-sidebar-first,
+.path-my-documents .layout-sidebar-second,
+.path-my-documents .region-sidebar-first,
+.path-my-documents .region-sidebar-second {
+  display: none !important;
+}
+
+.docportal-document-page .layout-content,
+.docportal-document-page .main-content,
+.docportal-document-page .region-content,
+.docportal-document-page .block-system-main-block,
+.docportal-document-page .views-element-container,
+.path-documents .layout-content,
+.path-documents .main-content,
+.path-documents .region-content,
+.path-documents .block-system-main-block,
+.path-documents .views-element-container,
+.path-my-documents .layout-content,
+.path-my-documents .main-content,
+.path-my-documents .region-content,
+.path-my-documents .block-system-main-block,
+.path-my-documents .views-element-container {
+  float: none !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.docportal-document-page .docportal-content-shell,
+.docportal-document-page .docportal-content-shell > .layout-container,
+.docportal-document-page .docportal-content-shell .region-content,
+.docportal-document-page .docportal-content-shell .block-system-main-block,
+.docportal-document-page .docportal-content-shell .views-element-container,
+.path-documents .docportal-content-shell,
+.path-documents .docportal-content-shell > .layout-container,
+.path-documents .docportal-content-shell .region-content,
+.path-documents .docportal-content-shell .block-system-main-block,
+.path-documents .docportal-content-shell .views-element-container,
+.path-my-documents .docportal-content-shell,
+.path-my-documents .docportal-content-shell > .layout-container,
+.path-my-documents .docportal-content-shell .region-content,
+.path-my-documents .docportal-content-shell .block-system-main-block,
+.path-my-documents .docportal-content-shell .views-element-container,
+.view-document-library,
+.view-document-library .view-content,
+.view-document-library .views-table,
+.view-document-library table,
+.views-table {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.docportal-document-page .docportal-content-shell,
+.docportal-document-page .docportal-content-shell > .layout-container,
+.docportal-document-page .docportal-content-shell .region-content,
+.docportal-document-page .docportal-content-shell .block-system-main-block,
+.docportal-document-page .docportal-content-shell .views-element-container,
+.path-documents .docportal-content-shell,
+.path-documents .docportal-content-shell > .layout-container,
+.path-my-documents .docportal-content-shell,
+.path-my-documents .docportal-content-shell > .layout-container,
+.path-my-documents .docportal-content-shell .region-content,
+.path-my-documents .docportal-content-shell .block-system-main-block,
+.path-my-documents .docportal-content-shell .views-element-container {
+  min-height: 0 !important;
+}
+
+.docportal-document-page .docportal-content-shell,
+.path-documents .docportal-content-shell,
+.path-my-documents .docportal-content-shell {
+  padding: 1.1rem;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.docportal-document-page .docportal-page-hero,
+.path-documents .docportal-page-hero,
+.path-my-documents .docportal-page-hero {
+  margin-bottom: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: var(--glass-border);
+}
+
+.docportal-document-page .docportal-page-hero-icon,
+.path-documents .docportal-page-hero-icon,
+.path-my-documents .docportal-page-hero-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+}
+
+.docportal-document-page .docportal-page-hero-title,
+.path-documents .docportal-page-hero-title,
+.path-my-documents .docportal-page-hero-title {
+  font-size: 1.55rem;
+}
+
+.docportal-document-page .view-filters,
+.path-documents .view-filters,
+.path-my-documents .view-filters {
+  margin-bottom: 0.8rem;
+}
+
+.docportal-document-page .views-exposed-form,
+.docportal-document-page form.views-exposed-form,
+.path-documents .views-exposed-form,
+.path-documents form.views-exposed-form,
+.path-my-documents .views-exposed-form,
+.path-my-documents form.views-exposed-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: none;
+}
+
+.docportal-document-page .views-exposed-form .form-item,
+.docportal-document-page form.views-exposed-form .form-item,
+.path-documents .views-exposed-form .form-item,
+.path-documents form.views-exposed-form .form-item,
+.path-my-documents .views-exposed-form .form-item,
+.path-my-documents form.views-exposed-form .form-item {
+  flex: 1;
+  margin: 0;
+}
+
+.docportal-document-page .views-exposed-form input,
+.docportal-document-page form.views-exposed-form input,
+.path-documents .views-exposed-form input,
+.path-documents form.views-exposed-form input,
+.path-my-documents .views-exposed-form input,
+.path-my-documents form.views-exposed-form input {
+  width: 100%;
+}
+
+.docportal-document-page .views-exposed-form .form-actions,
+.docportal-document-page form.views-exposed-form .form-actions,
+.path-documents .views-exposed-form .form-actions,
+.path-documents form.views-exposed-form .form-actions,
+.path-my-documents .views-exposed-form .form-actions,
+.path-my-documents form.views-exposed-form .form-actions {
+  margin: 0;
+}
+
+.docportal-document-page .view-document-library,
+.docportal-document-page .view-document-library .view-content,
+.docportal-document-page .views-table,
+.docportal-document-page .view-document-library table {
+  display: block;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.view-document-library .view-content {
+  overflow-x: auto;
+}
+
+.docportal-document-page .view-document-library,
+.docportal-document-page .view-document-library > *,
+.docportal-document-page .view-content,
+.docportal-document-page .views-view-table,
+.docportal-document-page .views-table-wrapper,
+.docportal-document-page .views-element-container,
+.docportal-document-page .block-system-main-block,
+.docportal-document-page .region-content,
+.docportal-document-page .layout-content,
+.docportal-document-page main,
+.path-documents .view-document-library,
+.path-documents .view-document-library > *,
+.path-my-documents .view-document-library,
+.path-my-documents .view-document-library > * {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.docportal-document-page .view-document-library,
+.docportal-document-page .view-document-library .view-content {
+  justify-items: stretch !important;
+  align-items: stretch !important;
+  overflow-x: auto;
+  margin-left: 5rem !important;
+  margin-right: 0 !important;
+  width: calc(100% - 5rem) !important;
+  max-width: calc(100% - 5rem) !important;
+}
+
+.views-table,
+.view-document-library table {
+  table-layout: fixed !important;
+  min-width: 0;
+  display: table !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.docportal-document-page .views-table,
+.docportal-document-page .view-document-library table {
+  transform: none !important;
+}
+
+.views-table th:nth-child(1),
+.view-document-library table th:nth-child(1),
+.views-table td:nth-child(1),
+.view-document-library table td:nth-child(1) {
+  width: 34%;
+}
+
+.views-table th:nth-child(2),
+.view-document-library table th:nth-child(2),
+.views-table td:nth-child(2),
+.view-document-library table td:nth-child(2) {
+  width: 14%;
+}
+
+.views-table th:nth-child(3),
+.view-document-library table th:nth-child(3),
+.views-table td:nth-child(3),
+.view-document-library table td:nth-child(3) {
+  width: 22%;
+}
+
+.views-table th:nth-child(4),
+.view-document-library table th:nth-child(4),
+.views-table td:nth-child(4),
+.view-document-library table td:nth-child(4) {
+  width: 30%;
+}
+
+.views-table tbody td,
+.view-document-library table tbody td {
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+.docportal-cell-wrap {
+  width: 100%;
+  align-items: center;
+}
+
+.docportal-cell-wrap a,
+.docportal-cell-wrap span:not(.docportal-filetype) {
+  min-width: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.views-table tbody td:first-child .docportal-cell-wrap,
+.view-document-library table tbody td:first-child .docportal-cell-wrap {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+}
+
+.views-table tbody td:first-child a,
+.view-document-library table tbody td:first-child a {
+  color: var(--text-title);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.views-table tbody td:nth-child(4) .docportal-cell-wrap,
+.view-document-library table tbody td:nth-child(4) .docportal-cell-wrap {
+  justify-content: flex-start;
+}
+
+.views-table tbody td:nth-child(4) a,
+.view-document-library table tbody td:nth-child(4) a,
+.file a,
+.file--mime-application-pdf a {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 901px) {
+  .docportal-document-page .view-document-library .view-content,
+  .docportal-document-page .views-table,
+  .docportal-document-page .view-document-library table {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  .path-documents .docportal-content-shell,
+  .path-my-documents .docportal-content-shell {
+    min-height: 0 !important;
+  }
+
+  .path-documents .views-table,
+  .path-documents .view-document-library table {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .docportal-document-page .docportal-main,
+  .path-documents .docportal-main,
+  .path-my-documents .docportal-main {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .path-documents .docportal-page-hero,
+  .path-my-documents .docportal-page-hero {
+    gap: 0.75rem;
+  }
+
+  .path-documents .docportal-page-hero-left,
+  .path-my-documents .docportal-page-hero-left {
+    align-items: flex-start;
+  }
+
+  .path-documents .docportal-page-status,
+  .path-my-documents .docportal-page-status {
+    min-height: 28px;
+  }
+
+  .path-documents .views-exposed-form,
+  .path-documents form.views-exposed-form,
+  .path-my-documents .views-exposed-form,
+  .path-my-documents form.views-exposed-form {
+    display: grid;
+    max-width: none;
+  }
+
+  .docportal-document-page .view-document-library,
+  .docportal-document-page .view-document-library .view-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .view-document-library .view-content,
+  .views-table,
+  .view-document-library table,
+  .views-table tbody,
+  .view-document-library table tbody,
+  .views-table tr,
+  .view-document-library table tr,
+  .views-table td,
+  .view-document-library table td {
+    display: block;
+  }
+
+  .views-table thead,
+  .view-document-library table thead {
+    display: none;
+  }
+
+  .views-table,
+  .view-document-library table {
+    min-width: 0;
+    border: none;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .views-table tbody tr,
+  .view-document-library table tbody tr {
+    margin-bottom: 0.75rem;
+    border: var(--glass-border);
+    border-radius: 14px;
+    background: var(--glass-bg);
+    overflow: hidden;
+  }
+
+  .views-table tbody tr + tr td,
+  .view-document-library table tbody tr + tr td,
+  .views-table tbody td,
+  .view-document-library table tbody td {
+    border-top: none;
+  }
+
+  .views-table tbody td,
+  .view-document-library table tbody td {
+    width: 100% !important;
+    padding: 0.75rem 0.9rem;
+  }
+
+  .views-table tbody td::before,
+  .view-document-library table tbody td::before {
+    content: attr(data-docportal-label);
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .views-table tbody td:first-child .docportal-cell-wrap,
+  .view-document-library table tbody td:first-child .docportal-cell-wrap {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+}
+
