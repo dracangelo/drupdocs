@@ -3,8 +3,9 @@ body.path-user-password,
 body.path-user-register {
   background: var(--bg-page);
   background-image:
-    radial-gradient(ellipse at 30% 20%, rgba(0, 229, 255, 0.04), transparent 50%),
-    radial-gradient(ellipse at 70% 80%, rgba(93, 92, 255, 0.03), transparent 50%);
+    radial-gradient(circle at 20% 20%, rgba(0, 229, 255, 0.09), transparent 28%),
+    radial-gradient(circle at 80% 80%, rgba(255, 223, 184, 0.06), transparent 24%),
+    linear-gradient(180deg, rgba(7, 17, 30, 0.1), rgba(7, 17, 30, 0.7));
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -41,15 +42,22 @@ body.path-user-register .docportal-main {
 
 /* === Login Card — Glassmorphism === */
 .login-card-wrap {
+  width: min(100%, 460px);
   padding: 2.5rem;
-  border: var(--glass-border);
+  border: 1px solid rgba(181, 209, 223, 0.16);
   border-radius: var(--radius-lg);
-  background: var(--bg-surface);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+    var(--bg-surface);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
   box-shadow: var(--shadow-md);
   position: relative;
   overflow: hidden;
+}
+
+.login-card-wrap.docportal-auth-card {
+  animation: authCardIn 260ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .login-card-wrap::before {
@@ -63,6 +71,16 @@ body.path-user-register .docportal-main {
   border-radius: 50%;
   filter: blur(40px);
   pointer-events: none;
+}
+
+.login-card-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(0, 229, 255, 0.85), rgba(255, 223, 184, 0.65));
+  opacity: 0.9;
 }
 
 .login-logo-wrap {
@@ -80,8 +98,9 @@ body.path-user-register .docportal-main {
   justify-content: center;
   border: 1px solid rgba(0, 229, 255, 0.2);
   border-radius: 12px;
-  background: rgba(0, 229, 255, 0.1);
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.12), rgba(0, 229, 255, 0.06));
   color: var(--accent-primary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .login-logo-name {
@@ -89,17 +108,17 @@ body.path-user-register .docportal-main {
   font-family: 'Geist', sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .login-heading {
   margin: 0 0 0.35rem;
   color: var(--text-title);
   font-family: 'Geist', sans-serif;
-  font-size: 1.85rem;
+  font-size: clamp(1.6rem, 3vw, 1.95rem);
   font-weight: 700;
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .login-subheading {
@@ -135,7 +154,7 @@ body.path-user-register .form-item input {
   padding: 0 1rem;
   border: var(--glass-border);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text-main);
   font-family: 'Geist', sans-serif;
   font-size: 0.95rem;
@@ -143,12 +162,18 @@ body.path-user-register .form-item input {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+body.path-user-login .form-item input::placeholder,
+body.path-user-password .form-item input::placeholder,
+body.path-user-register .form-item input::placeholder {
+  color: rgba(212, 228, 250, 0.38);
+}
+
 body.path-user-login .form-item input:focus,
 body.path-user-password .form-item input:focus,
 body.path-user-register .form-item input:focus {
   outline: none;
   border-color: var(--border-glow);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(0, 229, 255, 0.08);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(0, 229, 255, 0.1);
 }
 
 body.path-user-login .form-actions input[type="submit"],
@@ -200,15 +225,26 @@ body.path-user-register .form-item--error-message {
   font-size: 0.82rem;
 }
 
+@keyframes authCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 480px) {
   .login-card-wrap {
-    padding: 1.75rem;
-    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    border-radius: 20px;
   }
 
   .login-heading {
     font-size: 1.55rem;
   }
 }
-
 

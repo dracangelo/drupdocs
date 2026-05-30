@@ -1,6 +1,3 @@
-
-/* my comment */
-
 /* =============================================
    PAGE HERO — Section Header
    ============================================= */
@@ -9,8 +6,10 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
   flex-wrap: wrap;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(176, 209, 224, 0.12);
 }
 
 .docportal-page-hero-left {
@@ -23,13 +22,14 @@
   width: 48px;
   height: 48px;
   border-radius: 14px;
-  background: rgba(0, 229, 255, 0.08);
-  border: 1px solid rgba(0, 229, 255, 0.18);
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.12), rgba(0, 229, 255, 0.05));
+  border: 1px solid rgba(0, 229, 255, 0.2);
   color: var(--accent-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
 .docportal-page-hero-icon svg {
@@ -40,7 +40,7 @@
 .docportal-page-hero-title {
   margin: 0 0 0.25rem;
   font-family: 'Geist', sans-serif;
-  font-size: 1.75rem;
+  font-size: clamp(1.5rem, 2vw, 1.9rem);
   font-weight: 700;
   color: var(--text-title);
   letter-spacing: 0;
@@ -61,9 +61,9 @@
   align-items: center;
   min-height: 34px;
   padding: 0 0.85rem;
-  border: 1px solid rgba(0, 229, 255, 0.16);
+  border: 1px solid rgba(0, 229, 255, 0.18);
   border-radius: 999px;
-  background: rgba(0, 229, 255, 0.06);
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.08), rgba(0, 229, 255, 0.04));
   color: var(--accent-primary);
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.68rem;
@@ -87,12 +87,13 @@
   padding: 1.25rem 1.35rem;
   border: var(--glass-border);
   border-radius: var(--radius-md);
-  background: var(--glass-bg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.028));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 .docportal-stat::after {
@@ -113,7 +114,7 @@
 
 .docportal-stat:hover {
   border-color: var(--border-strong);
-  background: rgba(255, 255, 255, 0.05);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.035));
   transform: translateY(-2px);
 }
 
@@ -130,7 +131,7 @@
 .docportal-stat-value {
   color: var(--text-title);
   font-family: 'Geist', sans-serif;
-  font-size: 2.25rem;
+  font-size: clamp(2rem, 4vw, 2.4rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0;
@@ -146,7 +147,7 @@
   padding: 0.85rem 1.1rem;
   border: var(--glass-border);
   border-radius: 12px;
-  background: var(--glass-bg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.025));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   transition: var(--transition);
@@ -181,6 +182,7 @@
 }
 
 .view-document-library .view-filters {
+  width: 100%;
   margin-bottom: 0;
 }
 
@@ -209,14 +211,14 @@
 .view-document-library table thead th {
   padding: 0.65rem 1.1rem;
   border-bottom: 1px solid var(--border-color);
-  color: #8fa8b4;
+  color: #9db4c0;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.65rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: left;
-  background: #162635;
+  background: linear-gradient(180deg, rgba(22, 38, 53, 0.95), rgba(17, 29, 40, 0.98));
   white-space: nowrap;
 }
 
@@ -231,12 +233,13 @@
 .view-document-library .view-content,
 .views-table,
 .view-document-library table {
-  border: 1px solid rgba(142, 190, 205, 0.2);
+  border: 1px solid rgba(142, 190, 205, 0.16);
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: #0d1a26;
+  background: linear-gradient(180deg, rgba(13, 26, 38, 0.98), rgba(12, 21, 30, 0.98));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ── Table rows as document cards ── */
@@ -266,7 +269,7 @@
 
 .views-table tbody tr:hover,
 .view-document-library table tbody tr:hover {
-  background: rgba(0, 229, 255, 0.075);
+  background: rgba(0, 229, 255, 0.065);
 }
 
 .views-table tbody tr + tr td,
@@ -277,7 +280,7 @@
 .views-table tbody td,
 .view-document-library table tbody td {
   padding: 1rem 1.1rem;
-  color: #b5c9d2;
+  color: #b7cad3;
   vertical-align: middle;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -304,7 +307,7 @@
 /* Document title column — Geist body-md bold */
 .views-table tbody td:first-child,
 .view-document-library table tbody td:first-child {
-  color: #d4f8ff;
+  color: #e5fbff;
   font-family: 'Geist', sans-serif;
   font-weight: 600;
   font-size: 0.9375rem;
@@ -313,7 +316,7 @@
 
 .views-table tbody td a,
 .view-document-library table tbody td a {
-  color: #d4f8ff;
+  color: #e5fbff;
   font-family: 'Geist', sans-serif;
   font-weight: 600;
   font-size: 0.9375rem;
@@ -351,16 +354,17 @@
   align-items: center;
   gap: 1rem;
   padding: 0.9rem 1.1rem;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.025);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
 }
 
 .dp-card:hover {
-  background: rgba(0, 229, 255, 0.04);
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.055), rgba(255, 255, 255, 0.025));
   border-color: rgba(0, 229, 255, 0.18);
   transform: translateX(3px);
 }
@@ -515,7 +519,7 @@
   padding: 0 0.7rem;
   border: 1px solid rgba(0, 229, 255, 0.15);
   border-radius: 999px;
-  background: rgba(0, 229, 255, 0.06);
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.08), rgba(0, 229, 255, 0.04));
   color: var(--accent-primary);
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.68rem;
@@ -557,6 +561,7 @@
   color: #00363d !important;
   border-color: var(--accent-primary);
   box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
 }
 
 .file a::before,
@@ -577,7 +582,9 @@
   padding: 2rem;
   border: var(--glass-border);
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.04), rgba(18, 33, 49, 0.6));
+  background:
+    radial-gradient(circle at top right, rgba(0, 229, 255, 0.12), transparent 28%),
+    linear-gradient(135deg, rgba(0, 229, 255, 0.05), rgba(18, 33, 49, 0.72));
   position: relative;
   overflow: hidden;
 }
@@ -652,7 +659,7 @@
   padding: 1.25rem 1.5rem;
   border: var(--glass-border);
   border-radius: var(--radius-md);
-  background: rgba(0, 229, 255, 0.03);
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.04), rgba(255, 255, 255, 0.02));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -762,7 +769,7 @@
   padding: 1rem 1.25rem;
   border: var(--glass-border);
   border-radius: 12px;
-  background: var(--glass-bg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.025));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   margin-bottom: 0.75rem;
@@ -839,8 +846,9 @@
 
 .pager__item a:hover {
   border-color: var(--border-strong);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.07);
   color: var(--text-main);
+  transform: translateY(-1px);
 }
 
 .pager__item--current span {
@@ -1034,8 +1042,10 @@
   margin-right: auto;
   border: 1px solid rgba(132, 189, 211, 0.16);
   border-radius: var(--radius-lg);
-  background: #111f2b;
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.38);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.012)),
+    #111f2b;
+  box-shadow: 0 26px 64px rgba(0, 0, 0, 0.38);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
@@ -1104,6 +1114,13 @@
   width: 100%;
   max-width: none;
   margin-inline: 0;
+  flex-wrap: wrap;
+}
+
+.docportal-document-page .view-filters,
+.path-documents .view-filters,
+.path-my-documents .view-filters {
+  width: 100%;
 }
 
 .docportal-document-page .views-exposed-form .form-item,
@@ -1179,7 +1196,18 @@
   width: 100% !important;
   max-width: 100% !important;
   border-color: rgba(142, 190, 205, 0.18);
-  background: #0d1a26;
+  background: linear-gradient(180deg, rgba(13, 26, 38, 0.98), rgba(12, 21, 30, 0.98));
+}
+
+.main-content__container.container .contextual-region.view.view-document-library,
+.main-content__container.container .contextual-region.view.view-document-library .view-content,
+.main-content__container.container .contextual-region.view.view-document-library .views-table,
+.main-content__container.container .contextual-region.view.view-document-library table {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  box-sizing: border-box;
 }
 
 .docportal-document-page .view-document-library .view-content,
@@ -1188,6 +1216,12 @@
   margin-left: var(--docportal-list-indent) !important;
   width: calc(100% - var(--docportal-list-indent)) !important;
   max-width: calc(100% - var(--docportal-list-indent)) !important;
+}
+
+.main-content__container.container .contextual-region.view.view-document-library .view-content {
+  margin-left: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 .views-table,
@@ -1281,7 +1315,7 @@
   padding: 0.55rem 0.75rem;
   border: 1px solid rgba(0, 221, 255, 0.28);
   border-radius: 9px;
-  background: #12384a;
+  background: linear-gradient(180deg, #12384a, #0f2f3e);
   color: #00e5ff;
   white-space: normal;
   word-break: break-word;
@@ -1422,6 +1456,567 @@
   .views-table tbody td:first-child .docportal-cell-wrap,
   .view-document-library table tbody td:first-child .docportal-cell-wrap {
     grid-template-columns: 38px minmax(0, 1fr);
+  }
+}
+
+/* === Full-width document library overrides === */
+.docportal-document-page .main-content__container.container,
+.path-documents .main-content__container.container,
+.path-my-documents .main-content__container.container {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.docportal-document-page .main-content__container.container .contextual-region.view.view-document-library,
+.path-documents .main-content__container.container .contextual-region.view.view-document-library,
+.path-my-documents .main-content__container.container .contextual-region.view.view-document-library,
+.docportal-document-page .main-content__container.container .contextual-region.view.view-document-library .view-content,
+.path-documents .main-content__container.container .contextual-region.view.view-document-library .view-content,
+.path-my-documents .main-content__container.container .contextual-region.view.view-document-library .view-content,
+.docportal-document-page .main-content__container.container .contextual-region.view.view-document-library .views-table,
+.path-documents .main-content__container.container .contextual-region.view.view-document-library .views-table,
+.path-my-documents .main-content__container.container .contextual-region.view.view-document-library .views-table,
+.docportal-document-page .main-content__container.container .contextual-region.view.view-document-library table,
+.path-documents .main-content__container.container .contextual-region.view.view-document-library table,
+.path-my-documents .main-content__container.container .contextual-region.view.view-document-library table {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  box-sizing: border-box;
+}
+
+.docportal-document-page .view-filters,
+.path-documents .view-filters,
+.path-my-documents .view-filters {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+/* === Force the library to use full content width === */
+.docportal-document-page .main-content__container.container,
+.path-documents .main-content__container.container,
+.path-my-documents .main-content__container.container {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  display: block !important;
+  box-sizing: border-box;
+}
+
+.docportal-document-page .main-content__container.container .contextual-region.view.view-document-library,
+.path-documents .main-content__container.container .contextual-region.view.view-document-library,
+.path-my-documents .main-content__container.container .contextual-region.view.view-document-library {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.docportal-document-page .main-content__container.container .view-filters,
+.path-documents .main-content__container.container .view-filters,
+.path-my-documents .main-content__container.container .view-filters,
+.docportal-document-page .main-content__container.container .views-exposed-form,
+.path-documents .main-content__container.container .views-exposed-form,
+.path-my-documents .main-content__container.container .views-exposed-form {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.docportal-document-page .main-content__container.container .view-document-library,
+.path-documents .main-content__container.container .view-document-library,
+.path-my-documents .main-content__container.container .view-document-library,
+.docportal-document-page .main-content__container.container .view-document-library .view-content,
+.path-documents .main-content__container.container .view-document-library .view-content,
+.path-my-documents .main-content__container.container .view-document-library .view-content {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+.docportal-document-page .main-content__container.container .view-document-library table,
+.path-documents .main-content__container.container .view-document-library table,
+.path-my-documents .main-content__container.container .view-document-library table,
+.docportal-document-page .main-content__container.container .views-table,
+.path-documents .main-content__container.container .views-table,
+.path-my-documents .main-content__container.container .views-table {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  table-layout: fixed !important;
+}
+
+
+/* === Category chips + full-width document view === */
+body.path-documents .views-exposed-form .form-item-field-document-category-value,
+body.path-my-documents .views-exposed-form .form-item-field-document-category-value {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+body.path-documents .views-exposed-form .form-item-field-document-category-value label,
+body.path-my-documents .views-exposed-form .form-item-field-document-category-value label {
+  display: none;
+}
+
+body.path-documents .views-exposed-form .form-actions input[type="submit"],
+body.path-my-documents .views-exposed-form .form-actions input[type="submit"] {
+  padding: 5px 16px;
+  background: #0f1e35;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'DM Sans', 'Geist', sans-serif;
+  cursor: pointer;
+}
+
+body.path-documents .docportal-chips,
+body.path-my-documents .docportal-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+body.path-documents .docportal-chip,
+body.path-my-documents .docportal-chip {
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid rgba(181, 209, 223, 0.26);
+  color: var(--text-soft);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  font-family: 'DM Sans', 'Geist', sans-serif;
+  transition: all 0.15s ease;
+}
+
+body.path-documents .docportal-chip:hover,
+body.path-my-documents .docportal-chip:hover {
+  background: rgba(0, 229, 255, 0.08);
+  color: var(--text-title);
+  border-color: rgba(0, 229, 255, 0.22);
+}
+
+body.path-documents .docportal-chip.active,
+body.path-my-documents .docportal-chip.active {
+  background: var(--accent-primary);
+  color: #00363d;
+  border-color: var(--accent-primary);
+}
+
+body.path-documents .main-content__container.container,
+body.path-my-documents .main-content__container.container {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  background: transparent !important;
+  box-sizing: border-box;
+}
+
+body.path-documents .main-content__container.container .contextual-region.view.view-document-library,
+body.path-my-documents .main-content__container.container .contextual-region.view.view-document-library,
+body.path-documents .main-content__container.container .contextual-region.view.view-document-library .view-content,
+body.path-my-documents .main-content__container.container .contextual-region.view.view-document-library .view-content,
+body.path-documents .main-content__container.container .contextual-region.view.view-document-library .views-table,
+body.path-my-documents .main-content__container.container .contextual-region.view.view-document-library .views-table,
+body.path-documents .main-content__container.container .contextual-region.view.view-document-library table,
+body.path-my-documents .main-content__container.container .contextual-region.view.view-document-library table {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  box-sizing: border-box;
+}
+
+body.path-documents .docportal-content-shell,
+body.path-my-documents .docportal-content-shell {
+  width: 100% !important;
+  max-width: none !important;
+  background:
+    linear-gradient(180deg, rgba(11, 24, 37, 0.98), rgba(9, 18, 29, 0.98)),
+    #0b1825 !important;
+  border: 1px solid rgba(162, 196, 213, 0.16) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+body.path-documents .docportal-page-hero,
+body.path-my-documents .docportal-page-hero {
+  border-bottom: 1px solid rgba(174, 219, 232, 0.12);
+}
+
+body.path-documents .main-content__container.container .contextual-region.view.view-document-library .view-content,
+body.path-my-documents .main-content__container.container .contextual-region.view.view-document-library .view-content {
+  overflow: visible !important;
+  padding: 0 !important;
+}
+
+body.path-documents .main-content__container.container .contextual-region.view.view-document-library table,
+body.path-my-documents .main-content__container.container .contextual-region.view.view-document-library table {
+  table-layout: fixed !important;
+}
+
+body.path-user .docportal-content-shell {
+  width: 100% !important;
+  max-width: none !important;
+  background:
+    linear-gradient(180deg, rgba(11, 24, 37, 0.98), rgba(9, 18, 29, 0.98)),
+    #0b1825 !important;
+  border: 1px solid rgba(162, 196, 213, 0.16) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+body.path-user .docportal-profile-header {
+  padding: 1.5rem 1.75rem;
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at top right, rgba(0, 229, 255, 0.08), transparent 28%),
+    linear-gradient(135deg, rgba(0, 229, 255, 0.05), rgba(18, 33, 49, 0.72));
+}
+
+body.path-user .docportal-profile-name {
+  color: var(--text-title);
+}
+
+body.path-user .docportal-profile-meta {
+  color: var(--text-muted);
+}
+
+body.path-user .profile {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+body.path-user .profile .field,
+body.path-user .profile .member-for {
+  margin: 0;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(181, 209, 223, 0.16);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.025));
+  color: var(--text-soft);
+  box-shadow: var(--shadow-sm);
+}
+
+body.path-user .profile .field__label {
+  color: var(--text-muted);
+}
+
+body.path-user .profile .field__item,
+body.path-user .profile .field__item a {
+  color: var(--text-main);
+}
+
+body.path-user .profile .field--name-user-picture {
+  display: none !important;
+}
+
+body.path-user .profile .member-for {
+  grid-column: 1 / -1;
+}
+
+body.path-user .docportal-main,
+body.path-user .docportal-content-shell {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(0, 229, 255, 0.08), transparent 24%),
+    radial-gradient(circle at 85% 20%, rgba(255, 223, 184, 0.06), transparent 22%),
+    linear-gradient(180deg, rgba(10, 22, 34, 0.98), rgba(8, 18, 29, 0.98)) !important;
+}
+
+body.path-user .docportal-content-shell {
+  padding: 2rem;
+}
+
+body.path-user .docportal-page-hero {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(174, 219, 232, 0.12);
+}
+
+body.path-user .docportal-page-hero-title {
+  color: var(--text-title);
+}
+
+body.path-user .docportal-page-hero-sub,
+body.path-user .docportal-profile-meta,
+body.path-user .profile .field__label,
+body.path-user .profile .member-for {
+  color: var(--text-muted);
+}
+
+body.path-user .profile .field__item,
+body.path-user .profile .field__item a {
+  color: var(--text-main);
+}
+
+body.path-user .profile .field a {
+  color: var(--accent-primary);
+}
+
+body.path-user .profile .field a:hover {
+  color: #77f3ff;
+}
+
+body.path-user .profile .field,
+body.path-user .profile .member-for {
+  border-color: rgba(181, 209, 223, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
+}
+
+body.path-user .docportal-profile-avatar {
+  border-color: rgba(0, 229, 255, 0.22);
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.12), rgba(0, 229, 255, 0.06));
+}
+
+@media (max-width: 700px) {
+  body.path-user .docportal-content-shell {
+    padding: 1.1rem;
+  }
+}
+
+/* Home / documents page polish */
+body.path-documents .docportal-main,
+body.path-my-documents .docportal-main {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(0, 229, 255, 0.08), transparent 24%),
+    radial-gradient(circle at 88% 18%, rgba(255, 223, 184, 0.05), transparent 22%),
+    linear-gradient(180deg, rgba(10, 22, 34, 0.98), rgba(8, 18, 29, 0.98)) !important;
+}
+
+body.path-documents .docportal-content-shell,
+body.path-my-documents .docportal-content-shell {
+  padding: 1.5rem;
+  border-color: rgba(162, 196, 213, 0.15) !important;
+}
+
+body.path-documents .docportal-page-hero,
+body.path-my-documents .docportal-page-hero {
+  padding-bottom: 1rem;
+  margin-bottom: 1.35rem;
+  border-bottom: 1px solid rgba(174, 219, 232, 0.12);
+}
+
+body.path-documents .docportal-page-hero-title,
+body.path-my-documents .docportal-page-hero-title {
+  color: var(--text-title);
+}
+
+body.path-documents .docportal-page-hero-sub,
+body.path-my-documents .docportal-page-hero-sub {
+  color: var(--text-muted);
+}
+
+body.path-documents .view-document-library,
+body.path-my-documents .view-document-library {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+body.path-documents .view-document-library .view-content,
+body.path-my-documents .view-document-library .view-content {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+body.path-documents .views-table,
+body.path-my-documents .views-table,
+body.path-documents .view-document-library table,
+body.path-my-documents .view-document-library table {
+  width: 100% !important;
+  min-width: 100% !important;
+  table-layout: fixed !important;
+}
+
+body.path-documents .views-table th:nth-child(1),
+body.path-my-documents .views-table th:nth-child(1),
+body.path-documents .views-table td:nth-child(1),
+body.path-my-documents .views-table td:nth-child(1) {
+  width: 34%;
+}
+
+body.path-documents .views-table th:nth-child(2),
+body.path-my-documents .views-table th:nth-child(2),
+body.path-documents .views-table td:nth-child(2),
+body.path-my-documents .views-table td:nth-child(2) {
+  width: 14%;
+}
+
+body.path-documents .views-table th:nth-child(3),
+body.path-my-documents .views-table th:nth-child(3),
+body.path-documents .views-table td:nth-child(3),
+body.path-my-documents .views-table td:nth-child(3) {
+  width: 18%;
+}
+
+body.path-documents .views-table th:nth-child(4),
+body.path-my-documents .views-table th:nth-child(4),
+body.path-documents .views-table td:nth-child(4),
+body.path-my-documents .views-table td:nth-child(4) {
+  width: 34%;
+}
+
+body.path-documents .views-table tbody td,
+body.path-my-documents .views-table tbody td {
+  vertical-align: middle;
+}
+
+body.path-documents .views-table tbody td a,
+body.path-my-documents .views-table tbody td a {
+  color: var(--text-title);
+}
+
+@media (max-width: 700px) {
+  body.path-user .profile {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === Account page refresh === */
+body.path-user .docportal-main {
+  background:
+    radial-gradient(circle at 14% 12%, rgba(0, 229, 255, 0.1), transparent 26%),
+    radial-gradient(circle at 86% 16%, rgba(255, 223, 184, 0.06), transparent 22%),
+    linear-gradient(180deg, rgba(9, 20, 32, 0.98), rgba(7, 16, 26, 0.98)) !important;
+}
+
+body.path-user .docportal-content-shell {
+  padding: 1.75rem;
+  border: 1px solid rgba(162, 196, 213, 0.16) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
+    rgba(12, 23, 36, 0.96) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34) !important;
+}
+
+body.path-user .docportal-page-hero {
+  margin-bottom: 1.4rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(174, 219, 232, 0.12);
+}
+
+body.path-user .docportal-page-hero-icon {
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.14), rgba(0, 229, 255, 0.06));
+  border-color: rgba(0, 229, 255, 0.22);
+}
+
+body.path-user .docportal-page-hero-title {
+  color: var(--text-title);
+}
+
+body.path-user .docportal-page-hero-sub {
+  color: var(--text-muted);
+}
+
+body.path-user .docportal-page-status {
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.1), rgba(0, 229, 255, 0.05));
+  color: var(--accent-primary);
+}
+
+body.path-user .docportal-profile-header {
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(0, 229, 255, 0.14);
+  background:
+    radial-gradient(circle at top right, rgba(0, 229, 255, 0.08), transparent 32%),
+    linear-gradient(135deg, rgba(0, 229, 255, 0.05), rgba(18, 33, 49, 0.7));
+  box-shadow: var(--shadow-sm);
+}
+
+body.path-user .docportal-profile-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 20px;
+  font-size: 1.35rem;
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.15), rgba(0, 229, 255, 0.07));
+}
+
+body.path-user .docportal-profile-name {
+  color: var(--text-title);
+}
+
+body.path-user .docportal-profile-meta {
+  color: var(--text-muted);
+}
+
+body.path-user .profile {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+body.path-user .profile .field,
+body.path-user .profile .member-for {
+  margin: 0;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(181, 209, 223, 0.14);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
+  box-shadow: var(--shadow-sm);
+}
+
+body.path-user .profile .field:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0, 229, 255, 0.2);
+  background:
+    linear-gradient(180deg, rgba(0, 229, 255, 0.05), rgba(255, 255, 255, 0.03));
+}
+
+body.path-user .profile .field__label,
+body.path-user .profile .member-for {
+  color: var(--text-muted);
+}
+
+body.path-user .profile .field__item,
+body.path-user .profile .field__item a {
+  color: var(--text-main);
+}
+
+body.path-user .profile .field a {
+  color: var(--accent-primary);
+}
+
+body.path-user .profile .field a:hover {
+  color: #77f3ff;
+}
+
+body.path-user .profile .field--name-user-picture,
+body.path-user .profile .user-picture,
+body.path-user .profile img {
+  display: none !important;
+}
+
+body.path-user .profile .member-for {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 700px) {
+  body.path-user .docportal-content-shell {
+    padding: 1.1rem;
+  }
+
+  body.path-user .profile {
+    grid-template-columns: 1fr;
   }
 }
 

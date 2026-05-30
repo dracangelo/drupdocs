@@ -1,0 +1,580 @@
+/* =============================================
+   DOCPORTAL — UI POLISH PATCH
+   Fixes exposed filters, search bar, login,
+   mobile, and misc dark theme issues.
+   ============================================= */
+
+/* ── Hide Olivero leftovers ── */
+.olivero-nav,
+.site-header,
+.site-header__inner,
+.site-branding,
+header.site-header,
+.region-header,
+.olivero-search-bar,
+nav.olivero-nav,
+.region-primary-menu,
+.block-search-form-block,
+#block-olivero-search,
+.block-olivero-branding,
+.site-footer,
+.region-footer,
+footer.site-footer,
+.layout-sidebar-first,
+.layout-sidebar-second,
+.block-olivero-local-tasks,
+.olivero-local-tasks { display: none !important; }
+
+/* ── Fix body top padding ── */
+body { padding-top: 0 !important; }
+.layout-main-wrapper { margin-top: 0 !important; padding-top: 0 !important; }
+
+/* ─────────────────────────────────────────────
+   VIEWS EXPOSED FORM — Dark theme
+   ───────────────────────────────────────────── */
+.views-exposed-form {
+  margin-bottom: 1rem;
+}
+
+.views-exposed-form .form-item label,
+.views-exposed-form label {
+  color: var(--text-muted) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.65rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 0.4rem !important;
+  display: block !important;
+}
+
+/* Hide the ugly field machine name from labels */
+.views-exposed-form label[for*="field-document-category"]::after,
+.views-exposed-form .form-item label {
+  content: '' !important;
+}
+
+.views-exposed-form .form-type-textfield input,
+.views-exposed-form .form-type-search input,
+.views-exposed-form input[type="text"],
+.views-exposed-form input[type="search"] {
+  width: 100% !important;
+  padding: 0.7rem 1rem !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(180, 207, 222, 0.14) !important;
+  border-radius: 10px !important;
+  color: var(--text-main) !important;
+  font-family: 'Geist', sans-serif !important;
+  font-size: 0.9rem !important;
+  transition: border-color 180ms ease, box-shadow 180ms ease !important;
+  outline: none !important;
+  -webkit-appearance: none !important;
+}
+
+.views-exposed-form input[type="text"]:focus,
+.views-exposed-form input[type="search"]:focus {
+  border-color: rgba(0, 229, 255, 0.28) !important;
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.08) !important;
+  background: rgba(0, 229, 255, 0.04) !important;
+}
+
+.views-exposed-form input[type="text"]::placeholder,
+.views-exposed-form input[type="search"]::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Apply button */
+.views-exposed-form .form-actions,
+.views-exposed-form .form-actions input[type="submit"] {
+  margin: 0 !important;
+}
+
+.views-exposed-form .form-actions input[type="submit"] {
+  padding: 0.7rem 1.4rem !important;
+  background: rgba(0, 229, 255, 0.1) !important;
+  border: 1px solid rgba(0, 229, 255, 0.22) !important;
+  border-radius: 10px !important;
+  color: var(--accent-primary) !important;
+  font-family: 'Geist', sans-serif !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 180ms ease !important;
+  white-space: nowrap !important;
+  -webkit-appearance: none !important;
+}
+
+.views-exposed-form .form-actions input[type="submit"]:hover {
+  background: rgba(0, 229, 255, 0.16) !important;
+  border-color: rgba(0, 229, 255, 0.36) !important;
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.14) !important;
+}
+
+/* Exposed form layout: search + category side by side */
+.views-exposed-form .views-exposed-widgets,
+.views-exposed-form form > .js-form-wrapper {
+  display: flex !important;
+  align-items: flex-end !important;
+  gap: 0.75rem !important;
+  flex-wrap: wrap !important;
+}
+
+.views-exposed-form .views-widget,
+.views-exposed-form .form-item {
+  flex: 1 1 200px !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.views-exposed-form .form-actions {
+  flex: 0 0 auto !important;
+}
+
+/* Hide category filter input — chips handle it */
+.form-item-field-document-category-value {
+  display: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   CATEGORY CHIPS — Polish
+   ───────────────────────────────────────────── */
+.docportal-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.docportal-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(180, 207, 222, 0.16);
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: all 150ms ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.docportal-chip:hover {
+  background: rgba(0, 229, 255, 0.07);
+  border-color: rgba(0, 229, 255, 0.22);
+  color: var(--accent-primary);
+}
+
+.docportal-chip.active {
+  background: rgba(0, 229, 255, 0.12);
+  border-color: rgba(0, 229, 255, 0.3);
+  color: var(--accent-primary);
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.12);
+}
+
+/* ─────────────────────────────────────────────
+   FILE TYPE BADGES — Polish
+   ───────────────────────────────────────────── */
+.docportal-filetype {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 26px;
+  padding: 0 7px;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  border: 1px solid transparent;
+}
+
+.ft-pdf  { background: rgba(255, 100, 80, 0.12); color: #ff7c6e; border-color: rgba(255, 100, 80, 0.2); }
+.ft-doc  { background: rgba(80, 140, 255, 0.12); color: #7ba8ff; border-color: rgba(80, 140, 255, 0.2); }
+.ft-xls  { background: rgba(60, 200, 120, 0.12); color: #5dd69c; border-color: rgba(60, 200, 120, 0.2); }
+.ft-zip  { background: rgba(255, 180, 60, 0.12); color: #ffc85a; border-color: rgba(255, 180, 60, 0.2); }
+.ft-other { background: rgba(180, 180, 220, 0.1); color: var(--text-muted); border-color: rgba(180,180,220,0.15); }
+
+/* ─────────────────────────────────────────────
+   FILE DOWNLOAD LINK — Dark styled button
+   ───────────────────────────────────────────── */
+.file a,
+.file--mime-application-pdf a,
+.file--mime-application-vnd a,
+.views-field-field-document-file a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  padding: 0.38rem 0.85rem !important;
+  background: rgba(0, 229, 255, 0.08) !important;
+  border: 1px solid rgba(0, 229, 255, 0.2) !important;
+  border-radius: 8px !important;
+  color: var(--accent-primary) !important;
+  font-family: 'Geist', sans-serif !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: all 150ms ease !important;
+  white-space: nowrap !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.file a:hover,
+.file--mime-application-pdf a:hover,
+.views-field-field-document-file a:hover {
+  background: rgba(0, 229, 255, 0.14) !important;
+  border-color: rgba(0, 229, 255, 0.34) !important;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.14) !important;
+}
+
+/* ─────────────────────────────────────────────
+   LOGIN PAGE — Full dark glass overhaul
+   ───────────────────────────────────────────── */
+body.path-user-login,
+body.path-user-password,
+body.path-user-register {
+  background: var(--bg-page) !important;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(0, 229, 255, 0.1), transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(255, 223, 184, 0.07), transparent 28%) !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.path-user-login .layout-container,
+body.path-user-password .layout-container,
+body.path-user-register .layout-container {
+  width: 100% !important;
+  max-width: 420px !important;
+  padding: 1.25rem !important;
+  margin: 0 auto !important;
+}
+
+/* Login card */
+body.path-user-login #block-olivero-content,
+body.path-user-password #block-olivero-content,
+body.path-user-register #block-olivero-content,
+body.path-user-login .block-system-main-block,
+body.path-user-password .block-system-main-block {
+  background: linear-gradient(180deg, rgba(22, 38, 54, 0.96), rgba(14, 26, 38, 0.98)) !important;
+  border: 1px solid rgba(180, 207, 222, 0.14) !important;
+  border-radius: 20px !important;
+  padding: 2.5rem 2rem !important;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(40px) !important;
+}
+
+/* Logo above the form */
+body.path-user-login .block-system-main-block::before,
+body.path-user-password .block-system-main-block::before {
+  content: 'DocPortal';
+  display: block;
+  font-family: 'Geist', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-title);
+  margin-bottom: 0.25rem;
+  letter-spacing: 0;
+}
+
+body.path-user-login .block-system-main-block::after,
+body.path-user-password .block-system-main-block::after {
+  content: 'Sign in to your secure workspace';
+  display: block;
+  font-family: 'Geist', sans-serif;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+}
+
+/* Form labels */
+body.path-user-login .form-item label,
+body.path-user-password .form-item label {
+  color: var(--text-muted) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.65rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 0.4rem !important;
+  display: block !important;
+}
+
+/* Form inputs */
+body.path-user-login .form-item input,
+body.path-user-password .form-item input {
+  width: 100% !important;
+  padding: 0.75rem 1rem !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(180, 207, 222, 0.16) !important;
+  border-radius: 10px !important;
+  color: var(--text-main) !important;
+  font-family: 'Geist', sans-serif !important;
+  font-size: 0.95rem !important;
+  outline: none !important;
+  transition: border-color 150ms ease, box-shadow 150ms ease !important;
+  -webkit-appearance: none !important;
+}
+
+body.path-user-login .form-item input:focus,
+body.path-user-password .form-item input:focus {
+  border-color: rgba(0, 229, 255, 0.36) !important;
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.1) !important;
+  background: rgba(0, 229, 255, 0.04) !important;
+}
+
+body.path-user-login .form-item input::placeholder,
+body.path-user-password .form-item input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Submit button */
+body.path-user-login .form-actions input[type="submit"],
+body.path-user-password .form-actions input[type="submit"] {
+  width: 100% !important;
+  padding: 0.8rem !important;
+  background: rgba(0, 229, 255, 0.12) !important;
+  border: 1px solid rgba(0, 229, 255, 0.26) !important;
+  border-radius: 10px !important;
+  color: var(--accent-primary) !important;
+  font-family: 'Geist', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  margin-top: 0.75rem !important;
+  transition: all 150ms ease !important;
+  letter-spacing: 0.02em !important;
+  -webkit-appearance: none !important;
+}
+
+body.path-user-login .form-actions input[type="submit"]:hover,
+body.path-user-password .form-actions input[type="submit"]:hover {
+  background: rgba(0, 229, 255, 0.2) !important;
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.2) !important;
+}
+
+/* Password reset link */
+body.path-user-login .form-item--error-message,
+body.path-user-login .messages {
+  background: rgba(255, 100, 80, 0.1) !important;
+  border: 1px solid rgba(255, 100, 80, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1rem !important;
+  color: #ff9e96 !important;
+  font-size: 0.85rem !important;
+  margin-bottom: 1rem !important;
+}
+
+body.path-user-login .form-item,
+body.path-user-password .form-item {
+  margin-bottom: 1.1rem !important;
+}
+
+/* ─────────────────────────────────────────────
+   MESSAGES — Status/Error/Warning
+   ───────────────────────────────────────────── */
+.messages--status {
+  background: rgba(60, 200, 120, 0.1) !important;
+  border: 1px solid rgba(60, 200, 120, 0.2) !important;
+  border-radius: 10px !important;
+  color: #5dd69c !important;
+  padding: 0.85rem 1rem !important;
+  font-size: 0.875rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.messages--error {
+  background: rgba(255, 100, 80, 0.1) !important;
+  border: 1px solid rgba(255, 100, 80, 0.2) !important;
+  border-radius: 10px !important;
+  color: #ff9e96 !important;
+  padding: 0.85rem 1rem !important;
+  font-size: 0.875rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.messages--warning {
+  background: rgba(255, 180, 60, 0.1) !important;
+  border: 1px solid rgba(255, 180, 60, 0.2) !important;
+  border-radius: 10px !important;
+  color: #ffc85a !important;
+  padding: 0.85rem 1rem !important;
+  font-size: 0.875rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.messages__list { margin: 0 !important; padding: 0 !important; list-style: none !important; }
+
+/* ─────────────────────────────────────────────
+   CATEGORY PILL on document rows — clickable
+   ───────────────────────────────────────────── */
+.views-field-field-document-category td,
+.views-field-field-document-category .views-field-field-document-category,
+.field--name-field-document-category .field__item {
+  cursor: pointer !important;
+}
+
+.views-field-field-document-category td span,
+.views-field-field-document-category a {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0.22rem 0.7rem !important;
+  border-radius: 999px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.68rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.03em !important;
+  background: rgba(0, 229, 255, 0.07) !important;
+  border: 1px solid rgba(0, 229, 255, 0.16) !important;
+  color: var(--accent-primary) !important;
+  text-decoration: none !important;
+  transition: all 150ms ease !important;
+  cursor: pointer !important;
+}
+
+.views-field-field-document-category td span:hover,
+.views-field-field-document-category a:hover {
+  background: rgba(0, 229, 255, 0.14) !important;
+  border-color: rgba(0, 229, 255, 0.28) !important;
+}
+
+/* ─────────────────────────────────────────────
+   MOBILE — Polish
+   ───────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .views-table thead { display: none !important; }
+
+  .views-table tbody tr,
+  .view-document-library table tbody tr {
+    display: block !important;
+    padding: 1rem !important;
+    border-bottom: 1px solid rgba(150, 190, 205, 0.14) !important;
+  }
+
+  .views-table tbody td,
+  .view-document-library table tbody td {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0.4rem 0 !important;
+    border: none !important;
+    font-size: 0.85rem !important;
+  }
+
+  .views-table tbody td::before {
+    content: attr(data-docportal-label);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    margin-right: 0.75rem;
+  }
+
+  .views-exposed-form .views-exposed-widgets,
+  .views-exposed-form form > .js-form-wrapper {
+    flex-direction: column !important;
+  }
+
+  .views-exposed-form .views-widget,
+  .views-exposed-form .form-item {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+  }
+
+  .views-exposed-form .form-actions {
+    width: 100% !important;
+  }
+
+  .views-exposed-form .form-actions input[type="submit"] {
+    width: 100% !important;
+  }
+
+  .docportal-chips {
+    gap: 0.4rem !important;
+  }
+
+  .docportal-chip {
+    font-size: 0.72rem !important;
+    padding: 0.28rem 0.7rem !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   MISC POLISH
+   ───────────────────────────────────────────── */
+
+/* Hide page title duplication */
+.docportal-hidden-title { display: none !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(180, 207, 222, 0.18); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 229, 255, 0.28); }
+
+/* Selection */
+::selection { background: rgba(0, 229, 255, 0.2); color: var(--text-title); }
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid rgba(0, 229, 255, 0.5) !important;
+  outline-offset: 2px !important;
+}
+
+/* Pager */
+.pager { display: flex; gap: 0.4rem; margin-top: 1.25rem; justify-content: center; }
+.pager__item a, .pager__item span {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px;
+  font-size: 0.8rem; color: var(--text-muted);
+  border: 1px solid rgba(180, 207, 222, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+  text-decoration: none; transition: all 150ms ease;
+}
+.pager__item--current span,
+.pager__item a:hover {
+  background: rgba(0, 229, 255, 0.12);
+  color: var(--accent-primary);
+  border-color: rgba(0, 229, 255, 0.24);
+}
+
+/* Node single view */
+.node--type-documents {
+  background: linear-gradient(180deg, rgba(18, 32, 46, 0.98), rgba(12, 22, 34, 0.98)) !important;
+  border: 1px solid rgba(180, 207, 222, 0.14) !important;
+  border-radius: 18px !important;
+  padding: 2rem !important;
+  max-width: 720px !important;
+}
+
+.node--type-documents .node__title {
+  font-family: 'Geist', sans-serif !important;
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  color: var(--text-title) !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.node--type-documents .field__label {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.62rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  margin-bottom: 0.4rem !important;
+}

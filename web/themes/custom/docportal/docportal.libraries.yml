@@ -4,6 +4,7 @@ global:
       css/global.css: {}
       css/login.css: {}
       css/documents.css: {}
+      css/polish.css: {}
   js:
     js/docportal.js: {}
   dependencies:
