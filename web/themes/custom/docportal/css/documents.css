@@ -2020,3 +2020,51 @@ body.path-user .profile .member-for {
   }
 }
 
+/* === Glassmorphism removal overrides === */
+body.path-documents .docportal-content-shell,
+body.path-my-documents .docportal-content-shell,
+body.path-user .docportal-content-shell,
+body.path-documents .docportal-page-hero,
+body.path-my-documents .docportal-page-hero,
+body.path-user .docportal-page-hero,
+body.path-documents .docportal-profile-header,
+body.path-user .docportal-profile-header,
+body.path-documents .docportal-stat,
+body.path-my-documents .docportal-stat,
+body.path-documents .docportal-search,
+body.path-my-documents .docportal-search,
+body.path-documents .docportal-doc-hero,
+body.path-my-documents .docportal-doc-hero,
+body.path-user .profile .field,
+body.path-user .profile .member-for,
+body.path-documents .dp-card,
+body.path-my-documents .dp-card,
+body.path-documents .views-table,
+body.path-my-documents .views-table,
+body.path-documents .view-document-library table,
+body.path-my-documents .view-document-library table {
+  background: #102030 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body.path-documents .docportal-content-shell,
+body.path-my-documents .docportal-content-shell,
+body.path-user .docportal-content-shell,
+body.path-documents .views-table,
+body.path-my-documents .views-table,
+body.path-documents .view-document-library table,
+body.path-my-documents .view-document-library table,
+body.path-user .profile .field,
+body.path-user .profile .member-for,
+body.path-documents .dp-card,
+body.path-my-documents .dp-card {
+  border-color: rgba(181, 209, 223, 0.14) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+body.path-documents .view-document-library .view-content,
+body.path-my-documents .view-document-library .view-content {
+  background: #102030 !important;
+}
+

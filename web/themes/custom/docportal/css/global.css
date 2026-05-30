@@ -7,10 +7,10 @@
 
   --bg-page: #07111e;
   --bg-page-accent: rgba(0, 229, 255, 0.08);
-  --bg-surface: rgba(16, 28, 42, 0.72);
+  --bg-surface: #102030;
   --bg-surface-solid: #101c2a;
   --bg-surface-strong: #162433;
-  --bg-topbar: rgba(7, 17, 30, 0.82);
+  --bg-topbar: #0b1825;
   --bg-hover: rgba(255, 255, 255, 0.055);
   --bg-active: rgba(0, 229, 255, 0.09);
   --border-color: rgba(180, 207, 222, 0.14);
@@ -34,9 +34,9 @@
   --transition: 180ms cubic-bezier(0.4, 0, 0.2, 1);
   --topbar-height: 68px;
 
-  --glass-bg: rgba(255, 255, 255, 0.035);
-  --glass-blur: blur(40px);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --glass-bg: #122131;
+  --glass-blur: none;
+  --glass-border: 1px solid rgba(181, 209, 223, 0.14);
 }
 
 * {
@@ -144,9 +144,7 @@ body.path-user-register .docportal-layout {
   right: 0;
   z-index: 1200;
   background: var(--bg-topbar);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  border-bottom: var(--glass-border);
+  border-bottom: 1px solid rgba(181, 209, 223, 0.12);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
 }
 
@@ -363,8 +361,6 @@ body.path-user-register .docportal-layout {
   padding: 1rem 1rem 1.25rem;
   border-top: var(--glass-border);
   background: var(--bg-topbar);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
   animation: fadeDown 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -431,8 +427,6 @@ body.path-user-register .docportal-layout {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
     var(--bg-surface);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   box-shadow: var(--shadow-md);
 }
 
@@ -537,8 +531,6 @@ body.path-user-register .docportal-layout {
   border: var(--glass-border);
   border-radius: 12px;
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 .docportal-main .profile .field__label,
@@ -723,13 +715,9 @@ body.toolbar-tray-open {
   inset: 0 auto 0 0;
   z-index: 1200;
   width: 280px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18%),
-    rgba(7, 19, 32, 0.92);
+  background: #0d1b29;
   border-right: 1px solid rgba(181, 209, 223, 0.14);
   box-shadow: 18px 0 42px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
 }
 
 @media (min-width: 701px) {
@@ -755,7 +743,7 @@ body.toolbar-tray-open {
   padding: 0.75rem;
   border: 1px solid rgba(177, 205, 220, 0.14);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
+  background: #132131;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
@@ -1022,5 +1010,33 @@ footer *,
   padding: 0 !important;
   background: transparent !important;
   box-sizing: border-box;
+}
+
+/* === Flat UI safety net === */
+.docportal-layout *,
+.docportal-layout *::before,
+.docportal-layout *::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.docportal-layout .docportal-content-shell,
+.docportal-layout .docportal-sidebar,
+.docportal-layout .docportal-topbar,
+.docportal-layout .docportal-mobile-nav,
+.docportal-layout .docportal-user-chip,
+.docportal-layout .docportal-brand,
+.docportal-layout .nav-item,
+.docportal-layout .docportal-logout-btn,
+.docportal-layout .docportal-stat,
+.docportal-layout .docportal-search,
+.docportal-layout .docportal-profile-header,
+.docportal-layout .profile .field,
+.docportal-layout .profile .member-for,
+.docportal-layout .docportal-doc-hero,
+.docportal-layout .docportal-doc-download,
+.docportal-layout .pager__item a,
+.docportal-layout .tabs--primary a {
+  background-image: none !important;
 }
 
